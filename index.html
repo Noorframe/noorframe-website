@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHATTERBORN | Price of Blood</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #050505;
+            --ocre: #b8860b;
+            --purple: #6200ea;
+            --text: #d1d1d1;
+            --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body { 
+            background-color: var(--bg);
+            background-image: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), url("fond site 1.png");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: var(--text); 
+            font-family: 'Montserrat', sans-serif; 
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 35px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+        }
+
+        .studio-name { font-size: 0.75rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; color: #fff; }
+
+        .nav-links a {
+            color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; margin-left: 40px; opacity: 0.5; transition: var(--transition);
+        }
+        .nav-links a:hover { opacity: 1; color: var(--ocre); }
+
+        header {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
+            background-size: cover;
+            background-position: center;
+            z-index: 2;
+        }
+
+        .main-logo {
+            width: 85%; max-width: 700px; z-index: 10;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+            animation: logoEntrance 4s ease-out;
+        }
+
+        @keyframes logoEntrance {
+            from { opacity: 0; transform: scale(1.1); filter: blur(20px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
+        .site-separator {
+            width: 100%; height: auto; position: relative; z-index: 5;
+            display: block; margin-top: -550px; pointer-events: none;
+        }
+        .site-separator img { width: 100%; height: auto; display: block; }
+
+        .section-reveal { 
+            padding: 80px 10% 150px; max-width: 1400px; margin: auto;
+            opacity: 0; transform: translateY(50px); transition: var(--transition);
+            position: relative; z-index: 1;
+        }
+        .section-reveal.active { opacity: 1; transform: translateY(0); }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #fff; font-weight: 300; margin-bottom: 40px; line-height: 1.1;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        .accent-line {
+            width: 80px; height: 1px; background: linear-gradient(to right, var(--ocre), transparent);
+            margin-bottom: 40px;
+        }
+
+        .narrative-p { font-size: 1.1rem; max-width: 900px; margin-bottom: 25px; font-weight: 300; letter-spacing: 0.5px; opacity: 0.9; }
+
+        .grid-cinematic { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+
+        .visual-frame {
+            width: 100%; aspect-ratio: 16/9; background: rgba(10, 10, 10, 0.6); 
+            border: 1px solid rgba(255, 255, 255, 0.1); position: relative;
+            overflow: hidden; backdrop-filter: blur(5px);
+        }
+        .visual-frame img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.8s ease; }
+        .visual-frame:hover img { opacity: 1; transform: scale(1.03); }
+
+        .platforms-section {
+            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+        }
+
+        .platform-icons {
+            display: flex; justify-content: center; gap: 60px; margin-top: 40px;
+        }
+
+        .platform-item { 
+            display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
+            align-items: center; width: 120px; opacity: 0.7; cursor: default;
+        }
+
+        iconify-icon {
+            font-size: 2.8rem;
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: inherit; }
+
+        footer {
+            padding: 100px 10% 50px; text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8);
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.8rem;
+            letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase;
+        }
+
+        .footer-mail {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--ocre);
+            text-decoration: none;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
+
+        .social-links {
+            display: flex; justify-content: center; align-items: center;
+            gap: 60px; margin-bottom: 60px;
+        }
+
+        .social-links a {
+            font-size: 0.65rem; letter-spacing: 3px; color: var(--text);
+            text-decoration: none; text-transform: uppercase; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
+        }
+
+        .social-links a i { font-size: 2rem; }
+        .social-links a:hover { color: var(--ocre); }
+
+        @media (max-width: 1024px) {
+            .grid-cinematic { grid-template-columns: 1fr; gap: 60px; }
+            .platform-icons { gap: 30px; flex-wrap: wrap; }
+            .social-links { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="studio-name">Noorframe Interactive</div>
+        <div class="nav-links">
+            <a href="#description">L'Univers</a>
+            <a href="#studio">Studio</a>
+            <a href="#platforms">Plateformes</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <img src="LOGO SHATTERBORN 1.png" alt="Shatterborn" class="main-logo">
+    </header>
+
+    <div class="site-separator">
+        <img src="séparateur.png" alt="">
+    </div>
+
+    <section id="description" class="section-reveal">
+        <div class="accent-line"></div>
+        <div class="grid-cinematic">
+            <div>
+                <h2>Quand le sang se souvient</h2>
+                <p class="narrative-p">Shatterborn – Le Prix du Sang vous plonge dans une Afrique romaine crépusculaire, où les vestiges des civilisations anciennes abritent encore les traces d’une force interdite.</p>
+                <p class="narrative-p">Vous incarnez Esran, un être titanesque hanté par un passé détruit, que le retour de cette corruption force à sortir de l’ombre pour suivre une piste faite de ruines et de vérités enfouies.</p>
+            </div>
+            <div class="visual-frame">
+                <img src="letsgo.png" alt="Concept Art Shatterborn">
+            </div>
+        </div>
+    </section>
+
+    <section id="studio" class="section-reveal">
+        <div class="accent-line"></div>
+        <div class="grid-cinematic">
+            <div class="visual-frame" style="order: 2;">
+                <img src="visuaal.png" alt="Noorframe Interactive Vision">
+            </div>
+            <div style="order: 1;">
+                <h2>QUI SOMMES-NOUS</h2>
+                <p class="narrative-p">Noorframe Interactive est une entité indépendante tournée vers la création d’expériences premium en solo pour PC et consoles actuelles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms" class="platforms-section section-reveal">
+        <div class="accent-line" style="margin: 0 auto 40px;"></div>
+        <h2>Disponible Prochainement</h2>
+        <div class="platform-icons">
+            
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:playstation"></iconify-icon>
+                <span class="platform-name">PlayStation</span>
+            </div>
+            
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:xbox"></iconify-icon>
+                <span class="platform-name">Xbox Series</span>
+            </div>
+            
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:steam"></iconify-icon>
+                <span class="platform-name">Steam</span>
+            </div>
+            
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:epicgames"></iconify-icon>
+                <span class="platform-name">Epic</span>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-logo">Shatterborn</div>
+        
+        <a href="mailto:contact@noorframeinteractive.com" class="footer-mail">
+            contact@noorframeinteractive.com
+        </a>
+
+        <div class="social-links">
+            <a href="#"><i class="fab fa-youtube"></i>YouTube</a>
+            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-square-x-twitter"></i>X</a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+        </div>
+        <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">
+            © 2026 Noorframe Interactive. Conçu avec passion en Algérie.
+        </p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.section-reveal').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

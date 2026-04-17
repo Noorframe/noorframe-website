@@ -176,49 +176,35 @@
         .social-links a:hover { color: var(--ocre); }
 
         @media (max-width: 1024px) {
-    /* On garde tes réglages de base pour les icônes et la grille */
-    .grid-cinematic { grid-template-columns: 1fr; gap: 60px; }
-    .platform-icons { gap: 30px; flex-wrap: wrap; }
-    .social-links { gap: 30px; }
-
-    /* Le menu repasse en ligne (horizontale) et s'affine pour mobile */
+    /* Le menu reste en haut de la PAGE et s'en va quand on scrolle */
     nav {
+        position: absolute !important;
+        top: 0; left: 0; width: 100%;
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
-        align-items: center !important;
-        padding: 10px 3% !important;
-        height: auto !important;
+        padding: 10px 2% !important;
+        z-index: 1000;
     }
 
-    .nav-links {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 8px !important;
+    /* On réduit tout au maximum pour que ça tienne sur une ligne */
+    .nav-links { display: flex !important; flex-direction: row !important; gap: 4px !important; }
+    .nav-links a { font-size: 7.5px !important; white-space: nowrap !important; letter-spacing: 1px !important; }
+    .studio-name { font-size: 8px !important; }
+
+    /* On descend tout le contenu pour libérer le texte caché */
+    .hero { 
+        margin-top: 130px !important; 
+        text-align: center !important; 
+        padding: 0 10px !important;
     }
 
-    .nav-links a {
-        font-size: 9px !important;
-        white-space: nowrap !important;
-    }
-
-    .studio-name {
-        font-size: 11px !important;
-        margin-bottom: 0 !important;
-    }
-
-    /* On dégage l'espace pour que le texte "QUAND LE SANG SE SOUVIENT" respire */
-    .hero {
-        margin-top: 60px !important;
-        text-align: center !important;
-    }
-
+    /* Le titre "QUAND LE SANG SE SOUVIENT" */
     h2 {
         display: block !important;
-        margin-top: 25px !important;
-        font-size: 13px !important;
-        position: relative !important;
-        z-index: 100 !important;
+        font-size: 11px !important;
+        margin-top: 20px !important;
+        line-height: 1.4 !important;
     }
 }
         }

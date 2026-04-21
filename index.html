@@ -65,21 +65,14 @@
             background-position: center;
             z-index: 2;
         }
-header {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.fade-bridge {
+    width: 100%;
+    height: 400px; 
+    background: linear-gradient(to bottom, transparent, #050505);
+    margin-top: -400px;
     position: relative;
-    /* On ajoute un dégradé directement dans le background pour gommer le bas */
-    background: 
-        linear-gradient(to bottom, transparent 60%, #050505 100%),
-        linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), 
-        url("SHATTERBORN LOGO FOG.png");
-    background-size: cover;
-    background-position: center;
-    z-index: 2;
-    overflow: hidden;
+    z-index: 10;
+    pointer-events: none;
 }
         .main-logo {
             width: 85%; max-width: 700px; z-index: 10;
@@ -237,6 +230,7 @@ header {
         <img src="LOGO SHATTERBORN 1.png" alt="Shatterborn" class="main-logo">
     
     </header>
+    <div class="fade-bridge"></div>
 
    
 

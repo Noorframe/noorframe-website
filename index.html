@@ -194,7 +194,29 @@
             text-decoration: none; text-transform: uppercase; transition: 0.3s;
             display: flex; flex-direction: column; align-items: center; gap: 15px;
         }
+/* Cache l'anglais par défaut */
+.lang-en { display: none; }
 
+/* Style pour le sélecteur de langue */
+.lang-switcher {
+    margin-left: 30px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.lang-switcher span { 
+    opacity: 0.5; 
+    transition: 0.3s; 
+}
+
+.lang-switcher span.active { 
+    opacity: 1; 
+    color: var(--ocre); 
+    font-weight: bold; 
+}
         .social-links a i { font-size: 2rem; }
         .social-links a:hover { color: var(--ocre); }
 

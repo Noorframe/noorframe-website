@@ -14,6 +14,7 @@
         :root {
             --bg: #050505;
             --ocre: #b8860b;
+            --purple: #6200ea;
             --text: #d1d1d1;
             --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -71,6 +72,7 @@
             width: 100%; height: 400px; 
             background: linear-gradient(to bottom, transparent, #050505);
             margin-top: -400px; position: relative; z-index: 10;
+            pointer-events: none;
         }
 
         .main-logo {
@@ -92,6 +94,8 @@
             opacity: 0; 
             transform: translateY(50px); 
             transition: var(--transition);
+            position: relative; 
+            z-index: 1;
         }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -129,7 +133,7 @@
         }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATFORMS */
+        /* PLATEFORMES (FIXÉ ICI) */
         .platforms-section {
             text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
             border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
@@ -140,14 +144,22 @@
         }
 
         .platform-item { 
-            display: flex; flex-direction: column; gap: 15px; align-items: center; width: 120px; opacity: 0.7;
+            display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
+            align-items: center; width: 120px; opacity: 0.7;
         }
-        iconify-icon { font-size: 2.8rem; color: #fff; }
 
-        /* FOOTER */
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* FOOTER (BARRE TRANSLUCIDE FIXÉE ICI) */
         footer {
             padding: 100px 10% 50px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(5, 5, 5, 0.8);
         }
 
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
@@ -233,20 +245,32 @@
         <div class="accent-line" style="margin: 0 auto 40px;"></div>
         <h2>متوفر قريباً</h2>
         <div class="platform-icons">
-            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span>PlayStation</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span>Xbox Series</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span>Steam</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span>Epic Games</span></div>
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:playstation"></iconify-icon>
+                <span class="platform-name">PlayStation</span>
+            </div>
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:xbox"></iconify-icon>
+                <span class="platform-name">Xbox Series</span>
+            </div>
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:steam"></iconify-icon>
+                <span class="platform-name">Steam</span>
+            </div>
+            <div class="platform-item">
+                <iconify-icon icon="simple-icons:epicgames"></iconify-icon>
+                <span class="platform-name">Epic</span>
+            </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="footer-logo"><strong>شاتربورن: ثمن الدم</strong></div>
-        <a href="mailto:contact@noorframeinteractive.com" style="color: var(--ocre); text-decoration: none; font-size: 0.9rem;">contact@noorframeinteractive.com</a>
-        <div style="display: flex; justify-content: center; gap: 40px; margin: 40px 0;">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-youtube"></i></a>
-            <a href="https://x.com/noorframe" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+        <div class="footer-logo"><strong>شاتربورن</strong></div>
+        <a href="mailto:contact@noorframeinteractive.com" style="color: var(--ocre); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 40px; opacity: 0.8;">contact@noorframeinteractive.com</a>
+        <div style="display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap;">
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-youtube"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">YOUTUBE</span></a>
+            <a href="https://x.com/noorframe" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fa-brands fa-x-twitter"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">X</span></a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-instagram"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">INSTAGRAM</span></a>
         </div>
         <p style="font-size: 0.7rem; opacity: 0.3; letter-spacing: 1px;">© 2026 <strong>Noorframe Interactive</strong>. صُنع بشغف في الجزائر.</p>
     </footer>
@@ -254,7 +278,9 @@
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, { threshold: 0.15 });
         document.querySelectorAll('.section-reveal').forEach(s => observer.observe(s));

@@ -14,6 +14,7 @@
         :root {
             --bg: #050505;
             --ocre: #b8860b;
+            --purple: #6200ea;
             --text: #d1d1d1;
             --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -61,7 +62,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            /* L'image de fond reste la même pour l'ambiance */
             background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
             background-size: cover;
             background-position: center;
@@ -71,6 +71,7 @@
             width: 100%; height: 400px; 
             background: linear-gradient(to bottom, transparent, #050505);
             margin-top: -400px; position: relative; z-index: 10;
+            pointer-events: none;
         }
 
         .main-logo {
@@ -92,6 +93,8 @@
             opacity: 0; 
             transform: translateY(50px); 
             transition: var(--transition);
+            position: relative; 
+            z-index: 1;
         }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -141,14 +144,22 @@
         }
 
         .platform-item { 
-            display: flex; flex-direction: column; gap: 15px; align-items: center; width: 120px; opacity: 0.7;
+            display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
+            align-items: center; width: 120px; opacity: 0.7;
         }
-        iconify-icon { font-size: 2.8rem; color: #fff; }
+
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
         /* FOOTER */
         footer {
             padding: 100px 10% 50px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); 
+            background: rgba(5, 5, 5, 0.8);
         }
 
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; letter-spacing: 10px; text-transform: uppercase; }
@@ -159,12 +170,6 @@
             opacity: 0.8; transition: 0.3s;
         }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
-
-        .lang-switcher {
-            margin-left: 20px; font-size: 0.7rem; display: inline-flex; align-items: center;
-        }
-        .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
-        .lang-switcher a { text-decoration: none; color: inherit; opacity: 0.5; padding: 0 5px; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); gap: 15px; }
@@ -214,7 +219,7 @@
             <div>
                 <h2>ⴷⴰⵏⵉ ⴳ ⵓⵔ ⵉⵜⵜⵎⵜⵜⴰⵜ ⵢⵉⵣⵔⵉ</h2>
                 <p class="narrative-p"><strong>ⵛⴰⵜⵔⴱⵓⵔⵏ: ⴰⵜⵉⴳ ⵏ ⵉⴷⴰⵎⵎⵏ</strong> ⴰⴷ ⴽⵡⵏ ⵉⵙⵙⴽⵛⵎ ⴳ ⵓⵎⴰⴹⴰⵍ ⵏ ⵜⴼⵔⵉⵇⵜ ⵜⴰⵔⵓⵎⴰⵏⵉⵜ ⵜⴰⵎⵙⴷⵔⴰⵔⵜ, ⴷⴳ ⵜⵍⵍⴰ ⵜⵉⴳⴳⵓⵔⴰ ⵏ ⵜⵉⵖⵔⵎⵉⵡⵉⵏ ⵜⵉⵇⴱⵓⵔⵉⵏ ⴷ ⵜⵉⴼⵔⵉⵜ ⵏ ⵜⵣⵎⵎⴰⵔ ⵜⵓⴽⵔⵉⵙⵉⵏ.</p>
-                <p class="narrative-p">ⴰⴷ ⵜⴳⵎ ⴰⵎⴽⴰⵏ ⵏ "ⵉⵙⵔⴰⵏ", ⵢⴰⵏ ⵓⵜⵉⵜⴰⵏ ⵉⴷⴷⵔⵏ ⴷⴳ ⵜⵉيلⵍⴰⵙ, ⵉⵍⵍⴰ ⵢⵉⵣⵔⵉ-ⵏⵏⵙ ⵉⵔⵥⴰⵏ ⴷⴳ ⵡⵓⵍ-ⵏⵏⵙ. ⵎⴰⵢⴷ ⴷ-ⵢⵓⵖⴰⵍ "ⵓⴱⵙⴽⵓⵔⵉⵙ", ⵓⵔ ⵉⵍⵍⵉ ⵡⴰⵏⵏⴰ ⴰⴷ ⵉⵙⵙⵏⵜⵉ ⵜⵉⴽⵍⵉ ⵏⵏⵙ ⴰⴼⴰⴷ ⴰⴷ ⵢⴰⴼ ⵜⵉⴷⵜ ⵉⵏⵜⵍⵏ ⵙⴳ ⵉⵎⵉⵣⴰⵔ ⵏ ⵓⵣⵎⵣ.</p>
+                <p class="narrative-p">ⴰⴷ ⵜⴳⵎ ⴰⵎⴽⴰⵏ ⵏ "ⵉⵙⵔⴰⵏ", ⵢⴰⵏ ⵓⵜⵉⵜⴰⵏ ⵉⴷⴷⵔⵏ ⴷⴳ ⵜⵉⵍⵍⴰⵙ, ⵉⵍⵍⴰ ⵢⵉⵣⵔⵉ-ⵏⵏⵙ ⵉⵔⵥⴰⵏ ⴷⴳ ⵡⵓⵍ-ⵏⵏⵙ. ⵎⴰⵢⴷ ⴷ-ⵢⵓⵖⴰⵍ "ⵓⴱⵙⴽⵓⵔⵉⵙ", ⵓⵔ ⵉⵍⵍⵉ ⵡⴰⵏⵏⴰ ⴰⴷ ⵉⵙⵙⵏⵜⵉ ⵜⵉⴽⵍⵉ ⵏⵏⵙ ⴰⴼⴰⴷ ⴰⴷ ⵢⴰⴼ ⵜⵉⴷⵜ ⵉⵏⵜⵍⵏ ⵙⴳ ⵉⵎⵉⵣⴰⵔ ⵏ ⵓⵣⵎⵣ.</p>
             </div>
             <div class="visual-frame">
                 <img src="letsgo.png" alt="Shatterborn Art">
@@ -231,7 +236,7 @@
             <div>
                 <h2>ⵎⴰⵜⵜⴰ ⵏⴽⵏⵉ?</h2>
                 <p class="narrative-p">ⵉⵙⵙⵏⵜⵉ ⵓⵙⵜⵓⴷⵢⵓ <strong>"ⵏⵓⵔⴼⵔⵉⵎ ⵉⵏⵜⵉⵔⴰⴽⵜⵉⴼ"</strong> ⴷⴳ ⵓⵙⴳⴳⵯⴰⵙ ⵏ 2026, ⵉⴳⴰ ⵢⴰⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓⵎ ⵉⵥⵍⵉⵏ ⵙ ⵓⵙⵏⴼⵍⵓ ⵏ ⵜⵓⵔⴰⵔⵉⵏ ⵏ ⵜⵉⵍⵉⴼⵉⵣⵢⵓⵏ ⵜⵉⴼⴰⵍⴽⴰⵢⵉⵏ ⵉ ⵓⴽⵓⵎⴱⵢⵓⵜⵔ ⴷ ⵉⵎⴰⵙⵙⵏ ⵏ ⵜⵓⵔⴰⵔⵜ.</p>
-                <p class="narrative-p">ⵜⵉⵔⵔⴰⵜ ⵏⵏⵖ ⵜⴳⴰ ⴰⴷ ⵏⵙⴽﺮ ⵉⵎⴰⴹⴰⵍⵏ ⵓⵔ ⵉⵜⵜⵡⴰⵜⵜⵓⵏ ⴷ ⵜⵉⵏⴼⵓⵙⵉⵏ ⵉⵟⵟⴰⴼⵏ ⵢⴰⵏ ⵓⴷⵖⴰⵔ ⴷⴳ ⵡⵓⵍⴰⵡⵏ, ⴷⴳ ⵓⵙⵡⵉⵔ ⴰⵎⴰⴼⴰⵢ ⵏ ⵓⵙفⵓⴽⴽⵓ ⴷ ⵜⵣⵎⵎⴰⵔ ⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓⵎ.</p>
+                <p class="narrative-p">ⵜⵉⵔⵔⴰⵜ ⵏⵏⵖ ⵜⴳⴰ ⴰⴷ ⵏⵙⴽⵔ ⵉⵎⴰⴹⴰⵍⵏ ⵓⵔ ⵉⵜⵜⵡⴰⵜⵜⵓⵏ ⴷ ⵜⵉⵏⴼⵓⵙⵉⵏ ⵉⵟⵟⴰⴼⵏ ⵢⴰⵏ ⵓⴷⵖⴰⵔ ⴷⴳ ⵡⵓⵍⴰⵡⵏ, ⴷⴳ ⵓⵙⵡⵉⵔ ⴰⵎⴰⴼⴰⵢ ⵏ ⵓⵙⴼⵓⴽⴽⵓ ⴷ ⵜⵣⵎⵎⴰⵔ ⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓⵎ.</p>
             </div>
         </div>
     </section>
@@ -248,12 +253,12 @@
     </section>
 
     <footer id="contact">
-        <div class="footer-logo">ⵛⴰⵜⵔⴱⵓⵔⵏ</div>
+        <div class="footer-logo"><strong>ⵛⴰⵜⵔⴱⵓⵔⵏ</strong></div>
         <a href="mailto:contact@noorframeinteractive.com" class="footer-mail">contact@noorframeinteractive.com</a>
-        <div class="social-links">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank"><i class="fab fa-youtube"></i>YouTube</a>
-            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-square-x-twitter"></i>X</a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+        <div style="display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap;">
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-youtube"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">YOUTUBE</span></a>
+            <a href="https://x.com/noorframe" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fa-brands fa-x-twitter"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">X</span></a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-instagram"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">INSTAGRAM</span></a>
         </div>
         <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">
             © 2026 <strong>ⵏⵓⵔⴼⵔⵉⵎ ⵉⵏⵜⵉⵔⴰⴽⵜⵉⴼ</strong>. ⵙ ⵜⵉⵔⵔⴰⵜ ⵜⴰⵎⴰⴼⴰⵢⵜ ⴷⴳ ⴷⵣⴰⵢⵔ.

@@ -14,7 +14,6 @@
         :root {
             --bg: #050505;
             --ocre: #b8860b;
-            --purple: #6200ea;
             --text: #d1d1d1;
             --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -94,7 +93,7 @@
             opacity: 0; 
             transform: translateY(50px); 
             transition: var(--transition);
-            position: relative; 
+            position: relative;
             z-index: 1;
         }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
@@ -109,65 +108,66 @@
             margin-bottom: 40px;
         }
 
-        .narrative-p { 
-            font-size: 1.2rem; 
-            max-width: 750px;
-            margin-bottom: 25px; 
-            font-weight: 300; 
-            opacity: 0.9; 
-        }
+        .narrative-p { font-size: 1.2rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
 
-        .grid-cinematic { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr;
-            gap: 5vw;
-            align-items: center; 
-            width: 100%;
-        }
+        .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
 
-        .visual-frame {
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+        .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATEFORMES (FIXÉ ICI) */
+        /* PLATFORMS */
         .platforms-section {
             text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
             border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
         }
 
-        .platform-icons {
-            display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap;
-        }
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
 
         .platform-item { 
             display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
             align-items: center; width: 120px; opacity: 0.7;
         }
-
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
-        
         iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
-        
-        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
-        /* FOOTER (BARRE TRANSLUCIDE FIXÉE ICI) */
+        /* FOOTER & SOCIALS */
         footer {
             padding: 100px 10% 50px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); 
-            background: rgba(5, 5, 5, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8);
         }
 
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
 
-        .lang-switcher {
-            margin-right: 30px; font-size: 0.8rem;
-            display: inline-flex; align-items: center;
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 60px; 
+            margin-bottom: 60px; 
+            flex-wrap: wrap; 
         }
+        
+        .social-links a {
+            color: white !important;
+            font-size: 1.5rem;
+            text-decoration: none; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 15px;
+            opacity: 0.8; 
+            transition: 0.3s ease;
+        }
+        
+        .social-links a:hover { 
+            color: var(--ocre) !important; 
+            opacity: 1; 
+            transform: translateY(-5px); 
+        }
+
+        .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
+
+        .lang-switcher { margin-right: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; }
         .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
         .lang-switcher a { text-decoration: none; color: inherit; opacity: 0.5; padding: 0 10px; }
 
@@ -245,43 +245,27 @@
         <div class="accent-line" style="margin: 0 auto 40px;"></div>
         <h2>متوفر قريباً</h2>
         <div class="platform-icons">
-            <div class="platform-item">
-                <iconify-icon icon="simple-icons:playstation"></iconify-icon>
-                <span class="platform-name">PlayStation</span>
-            </div>
-            <div class="platform-item">
-                <iconify-icon icon="simple-icons:xbox"></iconify-icon>
-                <span class="platform-name">Xbox Series</span>
-            </div>
-            <div class="platform-item">
-                <iconify-icon icon="simple-icons:steam"></iconify-icon>
-                <span class="platform-name">Steam</span>
-            </div>
-            <div class="platform-item">
-                <iconify-icon icon="simple-icons:epicgames"></iconify-icon>
-                <span class="platform-name">Epic</span>
-            </div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
         </div>
     </section>
 
     <footer id="contact">
         <div class="footer-logo"><strong>شاتربورن</strong></div>
         <a href="mailto:contact@noorframeinteractive.com" style="color: var(--ocre); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 40px; opacity: 0.8;">contact@noorframeinteractive.com</a>
-        <div style="display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap;">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-youtube"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">YOUTUBE</span></a>
-            <a href="https://x.com/noorframe" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fa-brands fa-x-twitter"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">X</span></a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank" style="color: white; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px;"><i class="fab fa-instagram"></i><span style="font-size: 0.65rem; letter-spacing: 3px;">INSTAGRAM</span></a>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank"><i class="fab fa-youtube"></i><span class="social-label">YOUTUBE</span></a>
+            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-x-twitter"></i><span class="social-label">X</span></a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i><span class="social-label">INSTAGRAM</span></a>
         </div>
         <p style="font-size: 0.7rem; opacity: 0.3; letter-spacing: 1px;">© 2026 <strong>Noorframe Interactive</strong>. صُنع بشغف في الجزائر.</p>
     </footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.15 });
         document.querySelectorAll('.section-reveal').forEach(s => observer.observe(s));
     </script>

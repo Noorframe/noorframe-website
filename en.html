@@ -204,18 +204,21 @@
     letter-spacing: 2px;
     cursor: pointer;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+}
+
+.lang-switcher span, .lang-switcher a {
     display: inline-block;
+    width: 35px; 
+    text-align: center;
+    transition: 0.3s;
 }
 
-.lang-switcher span { 
-    opacity: 0.5; 
-    transition: 0.3s; 
-}
-
-.lang-switcher span.active { 
-    opacity: 1; 
-    color: var(--ocre); 
-    font-weight: bold; 
+.lang-switcher span.active {
+    opacity: 1;
+    color: var(--ocre);
+    font-weight: bold;
 }
         .social-links a i { font-size: 2rem; }
         .social-links a:hover { color: var(--ocre); }
@@ -264,9 +267,7 @@
             <a href="#studio">Studio</a>
             <a href="#platforms">Plateformes</a>
             <a href="#contact">Contact</a>
-            <div class="lang-switcher">
-    <a href="index.html" style="text-decoration: none; color: inherit; opacity: 0.5;">FR</a> | <span class="active">EN</span>
-</div>
+            <div class="lang-switcher"><a href="index.html" style="text-decoration: none; color: inherit; opacity: 0.5;">FR</a>|<span class="active">EN</span></div>
         </div>
     </nav>
 

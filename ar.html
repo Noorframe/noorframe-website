@@ -31,10 +31,10 @@
             font-family: 'Cairo', sans-serif; 
             line-height: 1.8;
             overflow-x: hidden;
-            direction: rtl; /* Reste en RTL pour le contenu */
+            direction: rtl; /* Le contenu global reste en Arabe (droite à gauche) */
         }
 
-        /* NAVIGATION FIXÉE EN LTR POUR GARDER L'ALIGNEMENT MONDIAL */
+        /* NAVIGATION FORCÉE EN GAUCHE-DROITE (comme EN/FR) */
         nav {
             position: absolute;
             top: 0; width: 100%;
@@ -44,7 +44,7 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important; /* Force Studio à gauche et Liens à droite */
+            direction: ltr; /* Force l'ordre visuel : Studio à gauche, Liens à droite */
         }
 
         .studio-name { font-size: 0.9rem; letter-spacing: 2px; font-weight: 200; color: #fff; }
@@ -53,7 +53,7 @@
         .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.8rem;
             margin-left: 30px; opacity: 0.5; transition: var(--transition);
-            direction: rtl; /* Le texte arabe dans le lien garde son sens */
+            direction: rtl; /* Le texte à l'intérieur du lien reste bien orienté */
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
@@ -87,7 +87,7 @@
             to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
-        /* SECTIONS - RESTE EN RTL */
+        /* SECTIONS */
         .section-reveal { 
             padding: 100px 5% 150px;
             max-width: 1400px;
@@ -117,6 +117,22 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
+        /* PLATFORMS */
+        .platforms-section {
+            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+        }
+
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
+
+        .platform-item { 
+            display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
+            align-items: center; width: 120px; opacity: 0.7;
+        }
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+
         /* FOOTER & SOCIALS */
         footer {
             padding: 100px 10% 50px; text-align: center;
@@ -137,23 +153,14 @@
             color: white !important; font-size: 1.5rem; text-decoration: none; 
             display: flex; flex-direction: column; align-items: center; gap: 15px;
             opacity: 0.8; transition: 0.3s ease;
-            direction: ltr;
+            direction: ltr; /* Garde l'icône au dessus du texte */
         }
         .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
-        /* LANG SWITCHER STYLES - FORCÉ EN LTR POUR DRAPEAUX À GAUCHE */
-        .lang-switcher {
-            margin-left: 30px; font-size: 0.7rem; letter-spacing: 2px;
-            text-transform: uppercase; display: inline-flex; align-items: center;
-            direction: ltr !important; 
-        }
-        .lang-switcher a, .lang-switcher span {
-            display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit;
-        }
+        .lang-switcher { margin-left: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; direction: ltr; }
         .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
-        .lang-switcher a { opacity: 0.5; transition: 0.3s; }
-        .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
+        .lang-switcher a { text-decoration: none; color: inherit; opacity: 0.5; padding: 0 10px; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); }
@@ -176,16 +183,16 @@
             <a href="#platforms">المنصات</a>
             <a href="#contact">اتصل بنا</a>
             <span class="lang-switcher">
-                <a href="index.html">
+                <a href="index.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
                     <iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN
                 </a>|
-                <a href="fr.html">
+                <a href="fr.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
                     <iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR
                 </a>|
-                <span class="active">
+                <span class="active" style="display: flex; align-items: center; gap: 6px;">
                     <iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي
                 </span>|
-                <a href="tmz.html">
+                <a href="tmz.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
                     <iconify-icon icon="circle-flags:amazigh" style="font-size: 14px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
                 </a>
             </span>
@@ -208,6 +215,31 @@
             <div class="visual-frame">
                 <img src="letsgo.png" alt="Shatterborn Art">
             </div>
+        </div>
+    </section>
+
+    <section id="studio" class="section-reveal">
+        <div class="accent-line"></div>
+        <div class="grid-cinematic">
+            <div class="visual-frame">
+                <img src="visuaal.png" alt="Noorframe Vision">
+            </div>
+            <div>
+                <h2>من نحن؟</h2>
+                <p class="narrative-p">تأسس استوديو <strong>"نورفريم إنتراكتيف"</strong> في عام 2026، وهو استوديو مستقل مخصص لابتكار تجارب ألعاب فردية فاخرة للكمبيوتر و أجهزة الألعاب.</p>
+                <p class="narrative-p">طموحنا هو بناء عوالم لا تُنسى وقصص تترك أثراً دائماً، avec الحفاظ على dقة التنفيذ والحرية الإبداعية التي تميز الاستوديوهات المستقلة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms" class="platforms-section section-reveal">
+        <div class="accent-line" style="margin: 0 auto 40px;"></div>
+        <h2>متوفر قريباً</h2>
+        <div class="platform-icons">
+            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
         </div>
     </section>
 

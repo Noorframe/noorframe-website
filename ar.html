@@ -34,7 +34,7 @@
             direction: rtl;
         }
 
-        /* NAVIGATION FORCÉE EN GAUCHE-DROITE (comme EN/FR) */
+        /* NAVIGATION */
         nav {
             position: absolute;
             top: 0; width: 100%;
@@ -50,29 +50,20 @@
         .studio-name { font-size: 0.9rem; letter-spacing: 2px; font-weight: 200; color: #fff; }
 
         .nav-links { display: flex; align-items: center; }
-        .nav-links a {
+        .nav-links > a {
             color: #fff; text-decoration: none; font-size: 0.8rem;
             margin-left: 30px; opacity: 0.5; transition: var(--transition);
+            direction: rtl;
         }
-        .nav-links a:hover { opacity: 1; color: var(--ocre); }
+        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
         /* HEADER */
         header {
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
             position: relative;
             background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
-            background-size: cover;
-            background-position: center;
-        }
-
-        .fade-bridge {
-            width: 100%; height: 400px; 
-            background: linear-gradient(to bottom, transparent, #050505);
-            margin-top: -400px; position: relative; z-index: 10;
-            pointer-events: none;
+            background-size: cover; background-position: center;
         }
 
         .main-logo {
@@ -86,91 +77,61 @@
             to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
-        .section-reveal { 
-            padding: 100px 5% 150px;
-            max-width: 1400px;
-            margin: auto;
-            opacity: 0; 
-            transform: translateY(50px); 
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
-        }
-        .section-reveal.active { opacity: 1; transform: translateY(0); }
-
-        h2 {
-            font-family: 'Amiri', serif; font-size: clamp(2.2rem, 5vw, 3.8rem);
-            color: #fff; font-weight: 700; margin-bottom: 40px; line-height: 1.2;
-        }
-
-        .accent-line {
-            width: 80px; height: 1px; background: linear-gradient(to left, var(--ocre), transparent);
-            margin-bottom: 40px;
-        }
-
-        .narrative-p { font-size: 1.2rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
-
-        .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
-
-        .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-
-        /* FOOTER & SOCIALS */
-        footer {
-            padding: 100px 10% 50px; text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8);
-        }
-
-        .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
-
-        .footer-mail {
-            display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre);
-            text-decoration: none; margin-bottom: 40px; text-transform: uppercase;
-            opacity: 0.8; transition: 0.3s ease;
-        }
-        .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
-
-        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .social-links a {
-            color: white !important; font-size: 1.5rem; text-decoration: none; 
-            display: flex; flex-direction: column; align-items: center; gap: 15px;
-            opacity: 0.8; transition: 0.3s ease;
-            direction: ltr; 
-        }
-        .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
-        .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
-
-        /* LANG SWITCHER STYLES - CORRECTION DES DRAPEAUX */
+        /* LANG SWITCHER CORRIGÉ (PLUS D'ESPACE) */
         .lang-switcher { 
-            margin-left: 30px; 
-            font-size: 0.8rem; 
+            margin-left: 40px; /* Plus d'espace après le lien contact */
+            font-size: 0.75rem; 
             display: inline-flex; 
             align-items: center; 
             direction: ltr !important; 
+            gap: 15px; /* Espace entre les blocs de langue et les barres | */
         }
         
-        /* On force chaque item à mettre son icône à gauche */
-        .lang-switcher a, .lang-switcher span { 
+        .lang-switcher a, .lang-switcher span.active-lang { 
             display: flex !important; 
-            flex-direction: row !important; 
             align-items: center; 
-            gap: 6px; 
+            gap: 10px; /* Espace entre le drapeau et le texte (EN, FR...) */
             text-decoration: none; 
             color: inherit; 
+            transition: 0.3s;
         }
 
-        .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
-        .lang-switcher a { opacity: 0.5; transition: 0.3s; }
+        .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
+        .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
+
+        /* Style pour les barres de séparation pour les rendre plus discrètes */
+        .lang-sep { opacity: 0.2; font-weight: 100; }
+
+        /* SECTIONS */
+        .section-reveal { 
+            padding: 100px 5% 150px; max-width: 1400px; margin: auto;
+            opacity: 0; transform: translateY(50px); transition: var(--transition);
+            position: relative; z-index: 1;
+        }
+        .section-reveal.active { opacity: 1; transform: translateY(0); }
+
+        h2 { font-family: 'Amiri', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; font-weight: 700; margin-bottom: 40px; }
+        .accent-line { width: 80px; height: 1px; background: linear-gradient(to left, var(--ocre), transparent); margin-bottom: 40px; }
+        .narrative-p { font-size: 1.2rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
+        .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
+        .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .visual-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* FOOTER */
+        footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
+        .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
+        .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; transition: 0.3s ease; }
+        .footer-mail:hover { letter-spacing: 3px; }
+        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
+        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; transition: 0.3s ease; direction: ltr; }
+        .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
+        .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .nav-links a { margin-left: 0; font-size: 10px; padding: 5px; }
-            .grid-cinematic { grid-template-columns: 1fr; }
-            .section-reveal { padding: 120px 8% 80px; }
-            h2 { text-align: right; font-size: 2.2rem !important; }
-            .lang-switcher { margin-left: 0; font-size: 10px; flex-wrap: wrap; justify-content: center; }
+            .lang-switcher { margin-left: 0; margin-top: 10px; }
         }
     </style>
 </head>
@@ -183,18 +144,25 @@
             <a href="#studio">الاستوديو</a>
             <a href="#platforms">المنصات</a>
             <a href="#contact">اتصل بنا</a>
+            
             <span class="lang-switcher">
                 <a href="index.html">
-                    <iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN
-                </a>|
+                    <iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN
+                </a>
+                <span class="lang-sep">|</span>
+                
                 <a href="fr.html">
-                    <iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR
-                </a>|
-                <span class="active">
-                    <iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي
-                </span>|
+                    <iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR
+                </a>
+                <span class="lang-sep">|</span>
+                
+                <span class="active-lang">
+                    <iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي
+                </span>
+                <span class="lang-sep">|</span>
+                
                 <a href="tmz.html">
-                    <iconify-icon icon="circle-flags:amazigh" style="font-size: 14px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
+                    <iconify-icon icon="circle-flags:amazigh" style="font-size: 16px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
                 </a>
             </span>
         </div>
@@ -203,7 +171,6 @@
     <header>
         <img src="LOGO_SHATTERBORN_AR.png" alt="شاتربورن: ثمن الدم" class="main-logo">
     </header>
-    <div class="fade-bridge"></div>
 
     <section id="description" class="section-reveal">
         <div class="accent-line"></div>

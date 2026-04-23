@@ -44,16 +44,17 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+            direction: ltr !important; 
         }
 
         .studio-name { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 300; color: #fff; }
 
         .nav-links { display: flex; align-items: center; }
-        .nav-links a {
+        .nav-links > a {
             color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 2px;
             margin-left: 20px; opacity: 0.5; transition: var(--transition);
         }
-        .nav-links a:hover { opacity: 1; color: var(--ocre); }
+        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
         /* HEADER */
         header {
@@ -85,6 +86,31 @@
             to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
+        /* LANG SWITCHER HARMONISÉ */
+        .lang-switcher { 
+            margin-left: 40px; 
+            font-size: 0.75rem; 
+            display: inline-flex; 
+            align-items: center; 
+            direction: ltr !important; 
+            gap: 15px; 
+        }
+        
+        .lang-switcher a, .lang-switcher span.active-lang { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 10px; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: 0.3s;
+        }
+
+        .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
+        .lang-switcher a { opacity: 0.5; }
+        .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
+
+        .lang-sep { opacity: 0.2; font-weight: 100; }
+
         /* SECTIONS */
         .section-reveal { 
             padding: 100px 5% 150px;
@@ -109,24 +135,7 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATFORMS */
-        .platforms-section {
-            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
-        }
-
-        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
-
-        .platform-item { 
-            display: flex; flex-direction: column; gap: 15px; transition: 0.3s; 
-            align-items: center; width: 120px; opacity: 0.7;
-        }
-        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
-        .platform-item:hover iconify-icon { color: var(--ocre); }
-        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
-        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
-
-        /* FOOTER & SOCIALS */
+        /* FOOTER */
         footer {
             padding: 100px 10% 50px; text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8);
@@ -134,7 +143,6 @@
 
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; letter-spacing: 10px; text-transform: uppercase; }
 
-        /* EFFET ZOOM SUR LE MAIL */
         .footer-mail {
             display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre);
             text-decoration: none; margin-bottom: 40px; text-transform: uppercase;
@@ -142,28 +150,20 @@
         }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
 
-        /* EFFET SUR LES RESEAUX */
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a {
             color: white !important; font-size: 1.5rem; text-decoration: none; 
             display: flex; flex-direction: column; align-items: center; gap: 15px;
             opacity: 0.8; transition: 0.3s ease;
+            direction: ltr;
         }
         .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
-        .lang-switcher { margin-left: 20px; font-size: 0.7rem; display: inline-flex; align-items: center; }
-        .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
-        .lang-switcher a { text-decoration: none; color: inherit; opacity: 0.5; padding: 0 5px; }
-
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); gap: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .nav-links a { margin-left: 0; font-size: 9px; padding: 5px; }
-            .grid-cinematic { grid-template-columns: 1fr; gap: 40px; }
-            .section-reveal { padding: 120px 8% 80px; }
-            h2 { font-size: 2rem !important; text-align: left; }
-            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; }
+            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
         }
     </style>
 </head>
@@ -176,18 +176,25 @@
             <a href="#studio">ⴰⵙⵜⵓⴷⵢⵓ</a>
             <a href="#platforms">ⵉⵎⴰⵙⵙⵏ</a>
             <a href="#contact">ⴰⵏⵢⴰⵍⴽⴰⵎ</a>
+            
             <span class="lang-switcher">
-                <a href="index.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
-                    <iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN
-                </a>|
-                <a href="fr.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
-                    <iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR
-                </a>|
-                <a href="ar.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
-                    <iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي
-                </a>|
-                <span class="active" style="display: flex; align-items: center; gap: 6px;">
-                    <iconify-icon icon="circle-flags:amazigh" style="font-size: 14px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
+                <a href="index.html">
+                    <iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN
+                </a>
+                <span class="lang-sep">|</span>
+                
+                <a href="fr.html">
+                    <iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR
+                </a>
+                <span class="lang-sep">|</span>
+                
+                <a href="ar.html">
+                    <iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي
+                </a>
+                <span class="lang-sep">|</span>
+                
+                <span class="active-lang">
+                    <iconify-icon icon="circle-flags:amazigh" style="font-size: 16px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
                 </span>
             </span>
         </div>
@@ -212,47 +219,13 @@
         </div>
     </section>
 
-    <section id="studio" class="section-reveal">
-        <div class="accent-line"></div>
-        <div class="grid-cinematic">
-            <div class="visual-frame">
-                <img src="visuaal.png" alt="Noorframe Vision">
-            </div>
-            <div>
-                <h2>ⵎⴰⵜⵜⴰ ⵏⴽⵏⵉ?</h2>
-                <p class="narrative-p">ⵉⵙⵙⵏⵜⵉ ⵓⵙⵜⵓⴷⵢⵓ <strong>"ⵏⵓⵔⴼⵔⵉⵎ ⵉⵏⵜⵉⵔⴰⴽⵜⵉⴼ"</strong> ⴷⴳ ⵓⵙⴳⴳⵯⴰⵙ ⵏ 2026, ⵉⴳⴰ ⵢⴰⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓّم ⵉⵥⵍⵉⵏ ⵙ ⵓⵙⵏⴼⵍⵓ ⵏ ⵜⵓⵔⴰⵔⵉⵏ ⵏ ⵜⵉيلⵉⴼⵉⵣⵢⵓⵏ ⵜⵉⴼⴰⵍⴽⴰⵢⵉⵏ ⵉ ⵓⴽⵓⵎⴱⵢⵓⵜⵔ ⴷ ⵉⵎⴰⵙⵙⵏ ⵏ ⵜⵓⵔⴰⵔⵜ.</p>
-                <p class="narrative-p">ⵜⵉⵔⵔⴰⵜ ⵏⵏⵖ ⵜⴳⴰ ⴰⴷ ⵏⵙⴽﺮ ⵉﻤⴰⴹⴰⵍⵏ ⵓⵔ ⵉⵜⵜⵡⴰⵜⵜⵓⵏ ⴷ ⵜⵉⵏⴼⵓⵙⵉⵏ ⵉⵟⵟⴰⴼⵏ ⵢⴰⵏ ⵓⴷⵖⴰⵔ ⴷⴳ ⵡⵓⵍⴰⵡⵏ, ⴷⴳ ⵓⵙⵡⵉⵔ ⴰⵎⴰⴼⴰⵢ ⵏ ⵓⵙⴼⵓⴽⴽⵓ ⴷ ⵜⵣⵎⵎⴰⵔ ⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓⵎ.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="platforms" class="platforms-section section-reveal">
-        <div class="accent-line" style="margin: 0 auto 40px;"></div>
-        <h2>ⵣⵉⴽ ⴰⴷ ⵉⵍⵉ</h2>
-        <div class="platform-icons">
-            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
-        </div>
-    </section>
-
     <footer id="contact">
         <div class="footer-logo"><strong>ⵛⴰⵜⴻⵔⴱⵓⵔⵏ</strong></div>
         <a href="mailto:contact@noorframeinteractive.com" class="footer-mail">contact@noorframeinteractive.com</a>
         <div class="social-links">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank">
-                <i class="fab fa-youtube"></i>
-                <span class="social-label">YOUTUBE</span>
-            </a>
-            <a href="https://x.com/noorframe" target="_blank">
-                <i class="fa-brands fa-x-twitter"></i>
-                <span class="social-label">X</span>
-            </a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank">
-                <i class="fab fa-instagram"></i>
-                <span class="social-label">INSTAGRAM</span>
-            </a>
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank"><i class="fab fa-youtube"></i><span class="social-label">YOUTUBE</span></a>
+            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-x-twitter"></i><span class="social-label">X</span></a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i><span class="social-label">INSTAGRAM</span></a>
         </div>
         <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">
             © 2026 <strong>ⵏⵓⵔⴼⵔⵉⵎ ⵉⵏⵜⵉⵔⴰⴽⵜⵉⴼ</strong>. ⵙ ⵜⵉⵔⵔⴰⵜ ⵜⴰⵎⴰⴼⴰⵢⵜ ⴷⴳ ⴷⵣⴰⵢⵔ.

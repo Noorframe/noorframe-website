@@ -114,13 +114,24 @@
 
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
-        .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s; }
+        
+        /* EFFET ZOOM SUR LE MAIL */
+        .footer-mail { 
+            display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); 
+            text-decoration: none; margin-bottom: 40px; text-transform: uppercase; 
+            opacity: 0.8; transition: 0.3s ease; 
+        }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
 
+        /* EFFET SUR LES RESEAUX */
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
+        .social-links a { 
+            color: white !important; font-size: 1.5rem; text-decoration: none; 
+            display: flex; flex-direction: column; align-items: center; gap: 15px; 
+            opacity: 0.8; transition: 0.3s ease; 
+        }
         .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
-        .social-label { font-size: 0.65rem; letter-spacing: 3px; }
+        .social-label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; }
 
         .lang-switcher { margin-left: 20px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; display: inline-flex; align-items: center; }
         .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
@@ -148,12 +159,12 @@
             <a href="#platforms">Plateformes</a>
             <a href="#contact">Contact</a>
             <span class="lang-switcher">
-                <span class="active" style="display: flex; align-items: center; gap: 6px;">
-                    <iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR
-                </span>|
                 <a href="index.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
                     <iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN
                 </a>|
+                <span class="active" style="display: flex; align-items: center; gap: 6px;">
+                    <iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR
+                </span>|
                 <a href="ar.html" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; opacity: 0.5;">
                     <iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي
                 </a>|
@@ -212,9 +223,18 @@
         <div class="footer-logo"><strong>Shatterborn</strong></div>
         <a href="mailto:contact@noorframeinteractive.com" class="footer-mail">contact@noorframeinteractive.com</a>
         <div class="social-links">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank"><i class="fab fa-youtube"></i><span class="social-label">YOUTUBE</span></a>
-            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-x-twitter"></i><span class="social-label">X</span></a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i><span class="social-label">INSTAGRAM</span></a>
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank">
+                <i class="fab fa-youtube"></i>
+                <span class="social-label">YouTube</span>
+            </a>
+            <a href="https://x.com/noorframe" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span class="social-label">X</span>
+            </a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span class="social-label">Instagram</span>
+            </a>
         </div>
         <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">
             © 2026 <strong>Noorframe Interactive</strong>. Fait avec passion en Algérie.

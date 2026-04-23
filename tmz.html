@@ -56,27 +56,7 @@
         }
         .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
-        /* HEADER */
-        header {
-            height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            position: relative;
-            background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
-            background-size: cover; background-position: center;
-        }
-
-        .main-logo {
-            width: 85%; max-width: 700px; z-index: 10;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
-            animation: logoEntrance 4s ease-out;
-        }
-
-        @keyframes logoEntrance {
-            from { opacity: 0; transform: scale(1.1); filter: blur(20px); }
-            to { opacity: 1; transform: scale(1); filter: blur(0); }
-        }
-
-        /* LANG SWITCHER AÉRÉ + SYMBOLE ⵣ */
+        /* LANG SWITCHER HARMONISÉ ET AÉRÉ */
         .lang-switcher { 
             margin-left: 40px; 
             font-size: 0.75rem; 
@@ -99,9 +79,34 @@
         .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
 
-        /* Style spécifique pour le ⵣ */
-        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; }
+        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
+
+        /* HEADER */
+        header {
+            height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
+            background-size: cover; background-position: center;
+        }
+
+        .fade-bridge {
+            width: 100%; height: 400px; 
+            background: linear-gradient(to bottom, transparent, #050505);
+            margin-top: -400px; position: relative; z-index: 10; pointer-events: none;
+        }
+
+        .main-logo {
+            width: 85%; max-width: 700px; z-index: 10;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+            animation: logoEntrance 4s ease-out;
+        }
+
+        @keyframes logoEntrance {
+            from { opacity: 0; transform: scale(1.1); filter: blur(20px); }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
 
         /* SECTIONS */
         .section-reveal { 
@@ -114,24 +119,47 @@
         h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; font-weight: 300; margin-bottom: 40px; line-height: 1.1; text-transform: uppercase; }
         .accent-line { width: 80px; height: 1px; background: linear-gradient(to right, var(--ocre), transparent); margin-bottom: 40px; }
         .narrative-p { font-size: 1.1rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
+        
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        .visual-frame img { width: 100%; height: 100%; object-fit: cover; }
+        .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
+        .visual-frame:hover img { transform: scale(1.03); }
+
+        /* PLATFORMS */
+        .platforms-section {
+            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+        }
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
+        .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
         /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; letter-spacing: 10px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
-        .footer-mail:hover { letter-spacing: 3px; }
+        .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
+
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
-        .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
+        .social-links a { 
+            color: white !important; font-size: 1.5rem; text-decoration: none; 
+            display: flex; flex-direction: column; align-items: center; gap: 15px; 
+            opacity: 0.8; transition: 0.3s ease; 
+        }
+        .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); gap: 15px; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .lang-switcher { margin-left: 0; margin-top: 10px; }
+            .nav-links a { margin-left: 0; font-size: 9px; padding: 5px; }
+            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+            .section-reveal { padding: 120px 8% 80px; }
+            .grid-cinematic { grid-template-columns: 1fr; gap: 40px; }
+            h2 { font-size: 2rem !important; text-align: left; }
         }
     </style>
 </head>
@@ -177,12 +205,38 @@
         <div class="accent-line"></div>
         <div class="grid-cinematic">
             <div>
-                <h2>ⴷⴰⵏⵉ ⴳ ⵓⵔ ⵉⵜⵜⵎⵜⵜⴰⵜ ⵢⵉⵣⵔِي</h2>
-                <p class="narrative-p"><strong>ⵛⴰⵜⴻⵔⴱⵓⵔⵏ: ⴰⵜⵉⴳ ⵏ ⵉⴷⴰⵎⵎⵏ</strong> ⴰⴷ ⴽⵡⵏ ⵉⵙⵙⴽⵛⵎ ⴳ ⵓⵎⴰⴹⴰⵍ ⵏ ⵜⴼⵔⵉⵇⵜ ⵜⴰⵔⵓⵎⴰⵏⵉⵜ ⵜⴰⵎⵙⴷⵔⴰⵔⵜ.</p>
+                <h2>ⴷⴰⵏⵉ ⴳ ⵓⵔ ⵉⵜⵜⵎⵜⵜⴰⵜ ⵢⵉⵣⵔⵉ</h2>
+                <p class="narrative-p"><strong>ⵛⴰⵜⴻⵔⴱⵓⵔⵏ: ⴰⵜⵉⴳ ⵏ ⵉⴷⴰⵎⵎⵏ</strong> ⴰⴷ ⴽⵡⵏ ⵉⵙⵙⴽⵛⵎ ⴳ ⵓⵎⴰⴹⴰⵍ ⵏ ⵜⴼⵔⵉⵇⵜ ⵜⴰⵔⵓⵎⴰⵏⵉⵜ ⵜⴰⵎⵙⴷⵔⴰⵔⵜ, ⴷⴳ ⵜⵍⵍⴰ ⵜⵉⴳⴳⵓⵔⴰ ⵏ ⵜⵉⵖⵔⵎⵉⵡⵉⵏ ⵜⵉⵇⴱⵓⵔⵉⵏ ⴷ ⵜⵉⴼⵔⵉⵜ ⵏ ⵜⵣⵎⵎⴰⵔ ⵜⵓⴽⵔⵉⵙⵉⵏ.</p>
+                <p class="narrative-p">ⴰⴷ ⵜⴳⵎ ⴰⵎⴽⴰⵏ ⵏ "ⵉⵙⵔⴰⵏ", ⵢⴰⵏ ⵓⵜⵉⵜⴰⵏ ⵉⴷⴷⵔⵏ ⴷⴳ ⵜⵉيلⵍⴰⵙ, ⵉيلⵍⴰ ⵢⵉⵣⵔⵉ-ⵏⵏⵙ ⵉⵔⵥⴰⵏ ⴷⴳ ⵡⵓⵍ-ⵏⵏⵙ. ⵎⴰⵢⴷ ⴷ-ⵢⵓⵖⴰⵍ "ⵓⴱⵙⴽⵓⵔⵉⵙ", ⵓⵔ ⵉⵍⵍⵉ ⵡⴰⵏⵏⴰ ⴰⴷ ⵉⵙⵙⵏⵜⵉ ⵜⵉⴽⵍⵉ ⵏⵏⵙ ⴰⴼⴰⴷ ⴰⴷ ⵢⴰⴼ ⵜⵉⴷⵜ ⵉⵏⵜⵍⵏ ⵙⴳ ⵉⵎⵉⵣⴰⵔ ⵏ ⵓⵣⵎⵣ.</p>
             </div>
             <div class="visual-frame">
                 <img src="letsgo.png" alt="Shatterborn Art">
             </div>
+        </div>
+    </section>
+
+    <section id="studio" class="section-reveal">
+        <div class="accent-line"></div>
+        <div class="grid-cinematic">
+            <div class="visual-frame">
+                <img src="visuaal.png" alt="Noorframe Vision">
+            </div>
+            <div>
+                <h2>ⵎⴰⵜⵜⴰ ⵏⴽⵏⵉ?</h2>
+                <p class="narrative-p">ⵉⵙⵙⵏⵜⵉ ⵓⵙⵜⵓⴷⵢⵓ <strong>"ⵏⵓⵔⴼⵔⵉⵎ ⵉⵏⵜⵉⵔⴰⴽⵜⵉⴼ"</strong> ⴷⴳ ⵓⵙⴳⴳⵯⴰⵙ ⵏ 2026, ⵉⴳⴰ ⵢⴰⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓّم ⵉⵥⵍⵉⵏ ⵙ ⵓⵙⵏⴼⵍⵓ ⵏ ⵜⵓⵔⴰⵔⵉⵏ ⵏ ⵜⵉيلⵉⴼⵉⵣⵢⵓⵏ ⵜⵉⴼⴰⵍⴽⴰⵢⵉⵏ ⵉ ⵓⴽⵓⵎⴱⵢⵓⵜⵔ ⴷ ⵉⵎⴰⵙⵙⵏ ⵏ ⵜⵓⵔⴰⵔⵜ.</p>
+                <p class="narrative-p">ⵜⵉⵔⵔⴰⵜ ⵏⵏⵖ ⵜⴳⴰ ⴰⴷ ⵏⵙⴽⵔ ⵉⵎⴰⴹⴰⵍⵏ ⵓⵔ ⵉⵜⵜⵡⴰⵜⵜⵓⵏ ⴷ ⵜⵉⵏⴼⵓⵙⵉⵏ ⵉⵟⵟⴰⴼⵏ ⵢⴰⵏ ⵓⴷⵖⴰⵔ ⴷⴳ ⵡⵓⵍⴰⵡⵏ, ⴷⴳ ⵓⵙⵡⵉير ⴰⵎⴰⴼⴰⵢ ⵏ ⵓⵙⴼⵓⴽⴽⵓ ⴷ ⵜⵣⵎⵎⴰⵔ ⵏ ⵓⵙⵜⵓⴷⵢⵓ ⴰⵏⵣⴳⵓⵎ.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms" class="platforms-section section-reveal">
+        <div class="accent-line" style="margin: 0 auto 40px;"></div>
+        <h2>ⵣⵉⴽ ⴰⴷ ⵉⵍⵉ</h2>
+        <div class="platform-icons">
+            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
         </div>
     </section>
 

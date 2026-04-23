@@ -44,7 +44,7 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important;
+            direction: ltr !important; /* Garde le nom du studio à gauche */
         }
 
         .studio-name { font-size: 0.75rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; color: #fff; }
@@ -55,6 +55,32 @@
             text-transform: uppercase; margin-left: 20px; opacity: 0.5; transition: var(--transition);
         }
         .nav-links > a:hover { opacity: 1; color: var(--ocre); }
+
+        /* LANG SWITCHER CORRIGÉ */
+        .lang-switcher { 
+            margin-left: 40px; 
+            font-size: 0.75rem; 
+            display: inline-flex; 
+            align-items: center; 
+            direction: ltr !important; 
+            gap: 15px; 
+        }
+        
+        .lang-switcher a, .lang-switcher span.active-lang { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 10px; 
+            text-decoration: none; 
+            color: inherit; 
+            transition: 0.3s;
+        }
+
+        .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
+        .lang-switcher a { opacity: 0.5; }
+        .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
+
+        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; }
+        .lang-sep { opacity: 0.2; font-weight: 100; }
 
         /* HEADER */
         header {
@@ -84,31 +110,6 @@
             to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
-        /* LANG SWITCHER HARMONISÉ */
-        .lang-switcher { 
-            margin-left: 40px; 
-            font-size: 0.75rem; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 15px; 
-        }
-        
-        .lang-switcher a, .lang-switcher span.active-lang { 
-            display: flex !important; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-            color: inherit; 
-            transition: 0.3s;
-        }
-
-        .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
-        .lang-switcher a { opacity: 0.5; }
-        .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
-
-        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; }
-        .lang-sep { opacity: 0.2; font-weight: 100; }
-
         /* SECTIONS */
         .section-reveal { 
             padding: 100px 5% 150px; max-width: 1400px; margin: auto;
@@ -130,15 +131,22 @@
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
         .visual-frame:hover img { transform: scale(1.03); }
 
+        /* PLATFORMS */
+        .platforms-section {
+            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+        }
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
+        .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
+
         /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
-        
-        .footer-mail { 
-            display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); 
-            text-decoration: none; margin-bottom: 40px; text-transform: uppercase; 
-            opacity: 0.8; transition: 0.3s ease; 
-        }
+        .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
 
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
@@ -153,7 +161,12 @@
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; gap: 15px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .lang-switcher { margin-left: 0; margin-top: 10px; }
+            .nav-links a { margin-left: 0; font-size: 9px; letter-spacing: 1px; padding: 5px; opacity: 0.8; }
+            .studio-name { font-size: 10px; letter-spacing: 3px; }
+            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+            .section-reveal { padding: 120px 8% 80px; }
+            .grid-cinematic { grid-template-columns: 1fr; gap: 40px; }
+            h2 { font-size: 2rem !important; margin-bottom: 25px; text-align: left; }
         }
     </style>
 </head>
@@ -201,7 +214,7 @@
             <div>
                 <h2>Là où le passé ne meurt jamais</h2>
                 <p class="narrative-p"><strong>Shatterborn : Le Prix du Sang</strong> vous plonge dans une Afrique romaine crépusculaire, où les ruines antiques cachent encore les traces d'une force interdite.</p>
-                <p class="narrative-p">Vous incarnez Esran, un Titan vivant dans l'ombre, hanté par un passé brisé. Quand l'Obscuris refait surface, il doit suivre une vérité enterrée depuis des siècles à travers les ruines et les mensonges de Rome.</p>
+                <p class="narrative-p">Vous incarnez Esran, un Titan vivant dans l'ombre, hanté par un passé brisé. Quand l'Obscuris refait surface, il doit suivre une vérité enterrée depuis des siècles à travers les ruines et les mensonges de Rome, et les blessures du temps.</p>
             </div>
             <div class="visual-frame">
                 <img src="letsgo.png" alt="Concept Art Shatterborn">

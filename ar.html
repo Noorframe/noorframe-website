@@ -35,7 +35,7 @@
             direction: rtl;
         }
 
-        /* NAVIGATION FORCÉE LTR POUR STUDIO À GAUCHE ET LIENS À DROITE */
+        /* NAVIGATION FORCÉE LTR */
         nav {
             position: absolute;
             top: 0; width: 100%;
@@ -45,7 +45,7 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important; 
+            direction: ltr !important;
         }
 
         .studio-name { font-size: 0.9rem; letter-spacing: 2px; font-weight: 200; color: #fff; }
@@ -58,7 +58,7 @@
         }
         .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LANG SWITCHER AÉRÉ AVEC ⵣ */
+        /* LANG SWITCHER */
         .lang-switcher { 
             margin-left: 40px; 
             font-size: 0.75rem; 
@@ -121,19 +121,45 @@
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
         .visual-frame:hover img { transform: scale(1.03); }
 
-        /* FOOTER */
+        /* PLATFORMS - ORDRE FIXÉ EN LTR */
+        .platforms-section {
+            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+        }
+        .platform-icons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 60px; 
+            margin-top: 40px; 
+            flex-wrap: wrap; 
+            direction: ltr !important; /* Force l'ordre PlayStation -> Epic */
+        }
+        .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
+        .platform-item:hover { opacity: 1; transform: translateY(-5px); }
+        .platform-item:hover iconify-icon { color: var(--ocre); }
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* FOOTER & SOCIALS ORDRE FIXÉ EN LTR */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; transition: 0.3s ease; }
         .footer-mail:hover { letter-spacing: 3px; }
-        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; direction: ltr; }
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 60px; 
+            margin-bottom: 60px; 
+            flex-wrap: wrap; 
+            direction: ltr !important; /* Force l'ordre YouTube -> Instagram */
+        }
+        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
             .nav-links a { margin-left: 0; font-size: 10px; padding: 5px; }
             .grid-cinematic { grid-template-columns: 1fr; }
             h2 { text-align: right; }
@@ -184,7 +210,7 @@
         <div class="accent-line"></div>
         <div class="grid-cinematic">
             <div class="visual-frame">
-                <img src="visuaal.png" alt="Noorframe Vision">
+                <img src="visuaal.png" alt="Noorframe Interactive Vision">
             </div>
             <div>
                 <h2>من نحن؟</h2>
@@ -194,14 +220,14 @@
         </div>
     </section>
 
-    <section id="platforms" class="section-reveal" style="text-align: center;">
+    <section id="platforms" class="platforms-section section-reveal">
         <div class="accent-line" style="margin: 0 auto 40px;"></div>
         <h2>متوفر قريباً</h2>
-        <div style="display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; opacity: 0.7;">
-            <iconify-icon icon="simple-icons:playstation" style="font-size: 2.8rem;"></iconify-icon>
-            <iconify-icon icon="simple-icons:xbox" style="font-size: 2.8rem;"></iconify-icon>
-            <iconify-icon icon="simple-icons:steam" style="font-size: 2.8rem;"></iconify-icon>
-            <iconify-icon icon="simple-icons:epicgames" style="font-size: 2.8rem;"></iconify-icon>
+        <div class="platform-icons">
+            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
         </div>
     </section>
 

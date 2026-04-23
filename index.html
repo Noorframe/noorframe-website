@@ -6,7 +6,7 @@
     <title>SHATTERBORN | Price of Blood</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="google-site-verification" content="V5YrHVfNNncQzV9pCvNar5Bsn2eKXt3il0DIBYbIyiU" />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Montserrat:wght@100;300;400&family=Noto+Sans+Tifinagh&display=swap" rel="stylesheet">
     
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -45,6 +45,7 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+            direction: ltr !important; 
         }
 
         .studio-name { font-size: 0.75rem; letter-spacing: 6px; text-transform: uppercase; font-weight: 300; color: #fff; }
@@ -82,12 +83,13 @@
             to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
-        /* LANG SWITCHER CORRIGÉ */
+        /* LANG SWITCHER HARMONISÉ */
         .lang-switcher { 
             margin-left: 40px; 
             font-size: 0.75rem; 
             display: inline-flex; 
             align-items: center; 
+            direction: ltr !important; 
             gap: 15px; 
         }
         
@@ -104,6 +106,8 @@
         .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
 
+        /* Style spécifique pour le ⵣ */
+        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
         /* SECTIONS */
@@ -125,7 +129,6 @@
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-        .visual-frame:hover img { transform: scale(1.03); }
 
         /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
@@ -145,12 +148,12 @@
             opacity: 0.8; transition: 0.3s ease; 
         }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
-        .social-label { font-size: 0.65rem; letter-spacing: 3px; }
+        .social-label { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; gap: 15px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .lang-switcher { margin-left: 0; margin-top: 10px; }
+            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
         }
     </style>
 </head>
@@ -181,7 +184,7 @@
                 <span class="lang-sep">|</span>
                 
                 <a href="tmz.html">
-                    <iconify-icon icon="circle-flags:amazigh" style="font-size: 16px;"></iconify-icon>ⵜⴰⵎⴰⵣⵉⵖⵜ
+                    <span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ
                 </a>
             </span>
         </div>

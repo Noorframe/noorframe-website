@@ -31,10 +31,10 @@
             font-family: 'Cairo', sans-serif; 
             line-height: 1.8;
             overflow-x: hidden;
-            direction: rtl;
+            direction: rtl; /* Le contenu global reste en Arabe (droite à gauche) */
         }
 
-        /* NAVIGATION */
+        /* NAVIGATION FORCÉE EN GAUCHE-DROITE (comme EN/FR) */
         nav {
             position: absolute;
             top: 0; width: 100%;
@@ -44,6 +44,7 @@
             align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+            direction: ltr; /* Force l'ordre visuel : Studio à gauche, Liens à droite */
         }
 
         .studio-name { font-size: 0.9rem; letter-spacing: 2px; font-weight: 200; color: #fff; }
@@ -51,7 +52,8 @@
         .nav-links { display: flex; align-items: center; }
         .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.8rem;
-            margin-right: 30px; opacity: 0.5; transition: var(--transition);
+            margin-left: 30px; opacity: 0.5; transition: var(--transition);
+            direction: rtl; /* Le texte à l'intérieur du lien reste bien orienté */
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
@@ -139,7 +141,6 @@
 
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
 
-        /* EFFET ZOOM SUR LE MAIL */
         .footer-mail {
             display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre);
             text-decoration: none; margin-bottom: 40px; text-transform: uppercase;
@@ -147,35 +148,35 @@
         }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
 
-        /* EFFET SUR LES RESEAUX */
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a {
             color: white !important; font-size: 1.5rem; text-decoration: none; 
             display: flex; flex-direction: column; align-items: center; gap: 15px;
             opacity: 0.8; transition: 0.3s ease;
+            direction: ltr; /* Garde l'icône au dessus du texte */
         }
         .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
-        .lang-switcher { margin-right: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; }
+        .lang-switcher { margin-left: 30px; font-size: 0.8rem; display: inline-flex; align-items: center; direction: ltr; }
         .lang-switcher span.active { color: var(--ocre); font-weight: bold; }
         .lang-switcher a { text-decoration: none; color: inherit; opacity: 0.5; padding: 0 10px; }
 
         @media (max-width: 1024px) {
             nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .nav-links a { margin-right: 0; font-size: 10px; padding: 5px; }
+            .nav-links a { margin-left: 0; font-size: 10px; padding: 5px; }
             .grid-cinematic { grid-template-columns: 1fr; }
             .section-reveal { padding: 120px 8% 80px; }
             h2 { text-align: right; font-size: 2.2rem !important; }
-            .lang-switcher { margin-right: 0; font-size: 10px; flex-wrap: wrap; justify-content: center; }
+            .lang-switcher { margin-left: 0; font-size: 10px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="studio-name">نورفريم إنتراكتيف</div>
+        <div class="studio-name">Noorframe Interactive</div>
         <div class="nav-links">
             <a href="#description">الكون</a>
             <a href="#studio">الاستوديو</a>
@@ -226,7 +227,7 @@
             <div>
                 <h2>من نحن؟</h2>
                 <p class="narrative-p">تأسس استوديو <strong>"نورفريم إنتراكتيف"</strong> في عام 2026، وهو استوديو مستقل مخصص لابتكار تجارب ألعاب فردية فاخرة للكمبيوتر و أجهزة الألعاب.</p>
-                <p class="narrative-p">طموحنا هو بناء عوالم لا تُنسى وقصص تترك أثراً دائماً، avec الحفاظ على دقة التنفيذ والحرية الإبداعية التي تميز الاستوديوهات المستقلة.</p>
+                <p class="narrative-p">طموحنا هو بناء عوالم لا تُنسى وقصص تترك أثراً دائماً، avec الحفاظ على dقة التنفيذ والحرية الإبداعية التي تميز الاستوديوهات المستقلة.</p>
             </div>
         </div>
     </section>

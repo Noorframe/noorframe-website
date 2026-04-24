@@ -39,7 +39,7 @@
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 25px 6%; /* Réduit un peu le padding pour laisser de la place au gros logo */
+            padding: 20px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,15 +48,24 @@
             direction: ltr !important;
         }
 
-        /* LOGO AJUSTÉ - PLUS GRAND ET NET */
+        /* STYLE DU LOGO - 200px comme demandé */
         .studio-logo {
-            height: 65px; /* Augmenté de 40px à 65px */
+            height: 200px;
             width: auto;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: 0.5s ease;
         }
-        .studio-logo:hover {
-            transform: scale(1.05); /* Petit effet de zoom au survol */
+
+        /* LOGO INTER-SECTION MOBILE (Masqué par défaut) */
+        .mobile-logo-mid {
+            display: none;
+            text-align: center;
+            padding: 60px 0;
+        }
+        .mobile-logo-mid img {
+            width: 150px;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 15px rgba(184, 134, 11, 0.2));
         }
 
         .nav-links { display: flex; align-items: center; }
@@ -75,20 +84,12 @@
             gap: 15px; 
             direction: ltr !important; 
         }
-        
         .lang-switcher a, .lang-switcher span.active-lang { 
-            display: flex !important; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-            color: inherit; 
-            transition: 0.3s;
+            display: flex !important; align-items: center; gap: 10px; text-decoration: none; color: inherit; transition: 0.3s;
         }
-
         .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
         .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
-
         .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
@@ -125,12 +126,7 @@
         }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
 
-        h2 {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #fff; font-weight: 300; margin-bottom: 40px; line-height: 1.1;
-            text-transform: uppercase; letter-spacing: 2px;
-        }
-
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; font-weight: 300; margin-bottom: 40px; line-height: 1.1; text-transform: uppercase; letter-spacing: 2px; }
         .accent-line { width: 80px; height: 1px; background: linear-gradient(to right, var(--ocre), transparent); margin-bottom: 40px; }
         .narrative-p { font-size: 1.1rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; letter-spacing: 0.5px; opacity: 0.9; }
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
@@ -139,10 +135,7 @@
         .visual-frame:hover img { transform: scale(1.03); }
 
         /* PLATFORMS */
-        .platforms-section {
-            text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
-        }
+        .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
@@ -155,25 +148,21 @@
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
-
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .social-links a { 
-            color: white !important; font-size: 1.5rem; text-decoration: none; 
-            display: flex; flex-direction: column; align-items: center; gap: 15px; 
-            opacity: 0.8; transition: 0.3s ease; 
-        }
+        .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; }
 
         @media (max-width: 1024px) {
-            nav { padding: 15px 5%; flex-direction: column; gap: 10px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            nav { padding: 20px 5%; flex-direction: column; gap: 15px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
             .nav-links a { margin-left: 0; font-size: 9px; letter-spacing: 1px; padding: 5px; opacity: 0.8; }
             .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
             .section-reveal { padding: 120px 8% 80px; }
             .grid-cinematic { grid-template-columns: 1fr; gap: 40px; }
             h2 { font-size: 2rem !important; margin-bottom: 25px; text-align: left; }
-            .studio-logo { height: 50px; } /* Un peu plus petit sur mobile */
+            .studio-logo { height: 100px; } /* Taille logo nav réduite sur mobile */
+            .mobile-logo-mid { display: block; } /* Affiche le logo entre Studio et Plateforme */
         }
     </style>
 </head>
@@ -188,24 +177,13 @@
             <a href="#contact">Contact</a>
             
             <span class="lang-switcher">
-                <span class="active-lang">
-                    <iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN
-                </span>
+                <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN</span>
                 <span class="lang-sep">|</span>
-                
-                <a href="fr.html">
-                    <iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR
-                </a>
+                <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR</a>
                 <span class="lang-sep">|</span>
-                
-                <a href="ar.html">
-                    <iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي
-                </a>
+                <a href="ar.html"><iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي</a>
                 <span class="lang-sep">|</span>
-                
-                <a href="tmz.html">
-                    <span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ
-                </a>
+                <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
             </span>
         </div>
     </nav>
@@ -242,6 +220,10 @@
             </div>
         </div>
     </section>
+
+    <div class="mobile-logo-mid">
+        <img src="logo-nav.png" alt="Noorframe">
+    </div>
 
     <section id="platforms" class="platforms-section section-reveal">
         <div class="accent-line" style="margin: 0 auto 40px;"></div>

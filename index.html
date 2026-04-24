@@ -36,13 +36,13 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - CENTRAGE ABSOLU PC */
+        /* NAVIGATION - CENTRAGE MATHÉMATIQUE PARFAIT */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 10px 3%; 
+            padding: 10px 0; 
             display: flex;
-            justify-content: center; /* Centre le bloc nav-links */
+            justify-content: center; 
             align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
@@ -54,14 +54,15 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
-            gap: 40px; /* Espace entre les groupes de liens et le logo */
+            width: 70%; /* Espace dédié au bloc central */
         }
 
+        /* Groupes de liens forcés à être de taille identique pour centrer le logo */
         .nav-group {
             display: flex;
             align-items: center;
-            gap: 30px;
-            flex: 1; /* Force les deux côtés à avoir la même largeur */
+            gap: 35px;
+            flex: 1 1 0; /* Verrouille le logo au milieu exact */
         }
 
         .group-left { justify-content: flex-end; }
@@ -74,12 +75,13 @@
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO PC - Pile au milieu */
+        /* LOGO PC - Pile au centre */
         .nav-logo {
             height: 80px;
             width: auto;
             object-fit: contain;
             transition: 0.5s ease;
+            margin: 0 40px;
             flex-shrink: 0;
         }
         .nav-logo:hover { transform: scale(1.1); }
@@ -120,7 +122,7 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATFORMS RESTAUREES */
+        /* PLATFORMS */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
@@ -128,8 +130,8 @@
         .platform-item:hover iconify-icon { color: var(--ocre); }
         iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
-
-        /* FOOTER & SOCIALS RESTAURES */
+        
+        /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
@@ -140,14 +142,14 @@
 
         .nav-hidden { transform: translateY(-100%); }
 
-        /* RESPONSIVE SMARTPHONE - INCHANGE */
+        /* RESPONSIVE SMARTPHONE */
         @media (max-width: 1024px) {
             nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-logo { height: 45px; margin: 0 10px; }
             .nav-links { width: 100%; gap: 0; }
             .nav-group { flex: none; gap: 5px; }
             .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
-            .lang-switcher { position: relative; right: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 4px; }
+            .lang-switcher { position: relative; right: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
             .section-reveal { padding: 90px 8% 40px; }
             h2 { font-size: 1.6rem !important; text-align: left; }
         }
@@ -251,7 +253,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

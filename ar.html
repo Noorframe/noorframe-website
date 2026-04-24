@@ -36,63 +36,62 @@
             direction: rtl;
         }
 
-        /* NAVIGATION - CENTRAGE MATHÉMATIQUE */
+        /* NAVIGATION - CENTRAGE PARFAIT PC */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 10px 0; 
+            padding: 10px 0;
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
             transition: var(--nav-transition);
+            direction: ltr !important; /* Force l'ordre visuel Gauche -> Droite */
         }
 
         .nav-links { 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            width: 70%;
+            width: 95%;
         }
 
-        /* Groupes de liens forcés à être de taille identique */
+        /* Groupes pour verrouiller le logo au centre */
         .nav-group {
             display: flex;
             align-items: center;
-            gap: 35px;
             flex: 1 1 0;
         }
 
-        /* En RTL : Group-Right est à gauche visuellement, Group-Left est à droite */
-        .group-left { justify-content: flex-start; }
-        .group-right { justify-content: flex-end; }
+        .group-left { justify-content: flex-end; gap: 30px; }
+        .group-right { justify-content: flex-start; gap: 30px; }
         
         .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.8rem;
             opacity: 0.5; transition: var(--transition);
             white-space: nowrap;
+            direction: rtl; /* Garde le texte arabe dans le bon sens */
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO PC - Pile au centre */
+        /* LOGO PC - 80px au centre */
         .nav-logo {
             height: 80px;
             width: auto;
             object-fit: contain;
-            transition: 0.5s ease;
             margin: 0 40px;
             flex-shrink: 0;
+            transition: 0.5s ease;
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER - Position absolue pour ne pas décentrer */
+        /* LANG SWITCHER - Remis à sa place dans le flux */
         .lang-switcher { 
-            position: absolute;
-            left: 3%; /* Inversé car dir=rtl */
             display: inline-flex; 
             align-items: center; 
             gap: 15px; 
+            margin-left: 20px;
             direction: ltr !important; 
         }
 
@@ -104,6 +103,9 @@
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
         .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
+
+        /* Spacer invisible à gauche pour équilibrer la largeur du lang-switcher à droite */
+        .nav-spacer { width: 160px; } 
 
         /* HEADER & SECTIONS */
         header { height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); background-size: cover; background-position: center; }
@@ -118,7 +120,7 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATFORMS - GLASSMORPHISM */
+        /* PLATFORMS */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; direction: ltr !important; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
@@ -138,13 +140,15 @@
 
         .nav-hidden { transform: translateY(-100%); }
 
+        /* RESPONSIVE SMARTPHONE */
         @media (max-width: 1024px) {
             nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-logo { height: 45px; margin: 0 10px; }
             .nav-links { width: 100%; gap: 0; }
             .nav-group { flex: none; gap: 5px; }
+            .nav-spacer { display: none; }
             .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
-            .lang-switcher { position: relative; left: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
+            .lang-switcher { margin-left: 0; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
             .section-reveal { padding: 90px 8% 40px; }
             h2 { text-align: right; font-size: 1.8rem !important; }
         }
@@ -154,27 +158,29 @@
 
     <nav id="mainNav">
         <div class="nav-links">
-            <div class="nav-group group-right">
+            <div class="nav-spacer"></div>
+
+            <div class="nav-group group-left">
                 <a href="#description">الكون</a>
                 <a href="#studio">الاستوديو</a>
             </div>
             
             <img src="logo-nav.png" alt="Noorframe Logo" class="nav-logo">
             
-            <div class="nav-group group-left">
+            <div class="nav-group group-right">
                 <a href="#platforms">المنصات</a>
                 <a href="#contact">اتصل بنا</a>
+                
+                <span class="lang-switcher">
+                    <a href="index.html"><iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN</a>
+                    <span class="lang-sep">|</span>
+                    <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR</a>
+                    <span class="lang-sep">|</span>
+                    <span class="active-lang"><iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي</span>
+                    <span class="lang-sep">|</span>
+                    <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
+                </span>
             </div>
-        </div>
-        
-        <div class="lang-switcher">
-            <a href="index.html"><iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN</a>
-            <span class="lang-sep">|</span>
-            <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR</a>
-            <span class="lang-sep">|</span>
-            <span class="active-lang"><iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي</span>
-            <span class="lang-sep">|</span>
-            <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
         </div>
     </nav>
 
@@ -201,7 +207,7 @@
             <div>
                 <h2>من نحن؟</h2>
                 <p class="narrative-p">تأسس استوديو <strong>"نورفريم إنتراكتيف"</strong> في عام 2026، وهو استوديو مستقل مخصص لابتكار تجارب ألعاب فردية فاخرة للكمبيوتر و أجهزة الألعاب.</p>
-                <p class="narrative-p">طموحنا هو بناء عوالم لا تُنسى وقصص تترك أثراً دائماً، مع الحفاظ على دقة التنفيذ والحرية الإبداعية التي تميز الاستوديوهات المستقلة.</p>
+                <p class="narrative-p">طموحنا هو بناء عوالم لا تُنسى وقصص تترك أثراً دائماً، مع الحفاظ au دقة التنفيذ والحرية الإبداعية التي تميز الاستوديوهات المستقلة.</p>
             </div>
         </div>
     </section>
@@ -238,7 +244,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

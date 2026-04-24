@@ -36,63 +36,65 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - Structure centrée et unifiée */
+        /* NAVIGATION - Logo central symétrique */
         nav {
             position: absolute;
             top: 0; width: 100%;
             padding: 10px 2%; 
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Centrage vertical parfait */
+            align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
             direction: ltr !important;
             transition: var(--nav-transition);
         }
 
-        /* LOGO UNIQUE DANS LE MENU */
+        /* Conteneur des liens qui gère le centrage du logo */
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            flex: 1; /* Prend tout l'espace central pour garantir le centrage */
+        }
+        
+        .nav-links > a {
+            color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
+            text-transform: uppercase; opacity: 0.5; transition: var(--transition);
+            margin: 0 20px; /* Espacement égal entre onglets */
+        }
+        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
+
+        /* LOGO - Position centrale entre Studio et Platforms */
         .nav-logo {
-            height: 100px; /* Taille idéale sur PC */
+            height: 80px; /* Taille équilibrée sur PC */
             width: auto;
             object-fit: contain;
-            margin: 0 30px; /* Espace entre Studio et Platforms */
+            margin: 0 40px; /* Espace autour du logo */
             transition: 0.5s ease;
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        .nav-links { 
-            display: flex; 
-            align-items: center; 
-            flex-grow: 1;
-            justify-content: center; /* Centre le bloc de liens */
-        }
-        
-        .nav-links > a {
-            color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px;
-            text-transform: uppercase; opacity: 0.5; transition: var(--transition);
-            white-space: nowrap;
-        }
-        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
-
-        /* Espacement spécifique pour les liens autour du logo */
-        .link-left { margin-right: 15px; }
-        .link-right { margin-left: 15px; }
-
         /* LANG SWITCHER */
         .lang-switcher { 
-            font-size: 0.75rem; 
             display: inline-flex; 
             align-items: center; 
             gap: 15px; 
             direction: ltr !important; 
+            width: 180px; /* Largeur fixe pour aider au centrage du bloc principal */
+            justify-content: flex-end;
         }
+        
+        /* Spacer invisible à gauche pour compenser la largeur du lang-switcher et centrer parfaitement le logo */
+        .nav-spacer { width: 180px; }
+
         .lang-switcher a, .lang-switcher span.active-lang { 
-            display: flex !important; align-items: center; gap: 8px; text-decoration: none; color: inherit; transition: 0.3s;
+            display: flex !important; align-items: center; gap: 6px; text-decoration: none; color: inherit; transition: 0.3s; font-size: 0.7rem;
         }
         .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
         .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
-        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; }
+        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
         /* HEADER & SECTIONS */
@@ -126,16 +128,16 @@
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
 
-        /* CLASSE POUR CACHER LE NAV AU SCROLL */
         .nav-hidden { transform: translateY(-100%); }
 
         /* RESPONSIVE SMARTPHONE - ULTRA FIN */
         @media (max-width: 1024px) {
-            nav { padding: 8px 1%; flex-direction: column; gap: 8px; background: rgba(5, 5, 5, 0.98); position: fixed; }
-            .nav-logo { height: 40px; margin: 0 10px; }
-            .nav-links { justify-content: center; gap: 5px; }
-            .nav-links a { font-size: 6.5px; letter-spacing: 1px; padding: 0 2px; }
-            .lang-switcher { font-size: 6.5px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
+            .nav-spacer { display: none; }
+            nav { padding: 8px 1%; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            .nav-logo { height: 45px; margin: 0 10px; }
+            .nav-links { justify-content: center; gap: 0; width: 100%; }
+            .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
+            .lang-switcher { font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 4px; }
             .section-reveal { padding: 90px 8% 40px; }
             h2 { font-size: 1.6rem !important; text-align: left; }
         }
@@ -144,26 +146,26 @@
 <body>
 
     <nav id="mainNav">
-        <div style="width: 100px;" class="desktop-only"></div>
+        <div class="nav-spacer"></div>
 
         <div class="nav-links">
-            <a href="#description" class="link-left">Universe</a>
-            <a href="#studio" class="link-left">Studio</a>
+            <a href="#description">Universe</a>
+            <a href="#studio">Studio</a>
             
             <img src="logo-nav.png" alt="Noorframe Logo" class="nav-logo">
             
-            <a href="#platforms" class="link-right">Platforms</a>
-            <a href="#contact" class="link-right">Contact</a>
+            <a href="#platforms">Platforms</a>
+            <a href="#contact">Contact</a>
         </div>
         
         <div class="lang-switcher">
-            <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 10px;"></iconify-icon>EN</span>
+            <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN</span>
             <span class="lang-sep">|</span>
-            <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 10px;"></iconify-icon>FR</a>
+            <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR</a>
             <span class="lang-sep">|</span>
-            <a href="ar.html"><iconify-icon icon="circle-flags:dz" style="font-size: 10px;"></iconify-icon>عربي</a>
+            <a href="ar.html"><iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي</a>
             <span class="lang-sep">|</span>
-            <a href="tmz.html"><span class="yaz-icon" style="font-size: 10px;">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
+            <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
         </div>
     </nav>
 
@@ -228,7 +230,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

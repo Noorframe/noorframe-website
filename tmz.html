@@ -35,18 +35,18 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - CENTRAGE MATHÉMATIQUE PARFAIT */
+        /* NAVIGATION - STRUCTURE DE CENTRAGE TOTAL COPIÉE SUR LE AR */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 10px 0; 
+            padding: 10px 0;
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important; /* Force l'ordre des blocs pour le centrage */
             transition: var(--nav-transition);
+            direction: ltr !important; 
         }
 
         .nav-links { 
@@ -56,35 +56,36 @@
             width: 95%; 
         }
 
-        /* Groupes de taille identique pour verrouiller le logo au milieu */
+        /* Groupes de taille égale pour forcer le logo au centre pur */
         .nav-group {
             display: flex;
             align-items: center;
             flex: 1 1 0; 
         }
 
-        .group-left { justify-content: flex-end; gap: 35px; }
-        .group-right { justify-content: flex-start; gap: 35px; }
+        .group-left { justify-content: flex-end; gap: 30px; }
+        .group-right { justify-content: flex-start; gap: 30px; }
         
         .nav-links a {
-            color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 2px;
-            text-transform: uppercase; opacity: 0.5; transition: var(--transition);
+            color: #fff; text-decoration: none; font-size: 0.75rem;
+            opacity: 0.5; transition: var(--transition);
             white-space: nowrap;
+            letter-spacing: 1px;
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO PC - Pile au centre */
+        /* LOGO PC - 80px au centre */
         .nav-logo {
             height: 80px;
             width: auto;
             object-fit: contain;
-            transition: 0.5s ease;
             margin: 0 40px;
             flex-shrink: 0;
+            transition: 0.5s ease;
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER - À sa place à la suite des onglets */
+        /* LANG SWITCHER DANS LE FLUX */
         .lang-switcher { 
             display: inline-flex; 
             align-items: center; 
@@ -102,8 +103,8 @@
         .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
-        /* Spacer pour équilibrer le poids visuel du lang-switcher */
-        .nav-spacer { width: 180px; flex-shrink: 0; } 
+        /* Spacer pour équilibrer parfaitement le logo à cause des langues à droite */
+        .nav-spacer { width: 160px; flex-shrink: 0; } 
 
         /* HEADER & SECTIONS */
         header { height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); background-size: cover; background-position: center; z-index: 2; }
@@ -124,18 +125,18 @@
 
         /* PLATFORMS */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
-        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; direction: ltr !important; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
-        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        iconify-icon { font-size: 2.8rem; color: #fff; }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
-
+        
         /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; letter-spacing: 10px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
-        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
+        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; direction: ltr !important; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
@@ -186,7 +187,7 @@
     </nav>
 
     <header>
-        <img src="LOGO SHATTERBORN TMZ.png" alt="Shatterborn" class="main-logo">
+        <img src="LOGO SHATTERBORN TMZ.png" alt="Shatterborn ⵛⴰⵜⴻⵔⴱⵓⵔⵏ" class="main-logo">
     </header>
     <div class="fade-bridge"></div>
 
@@ -198,7 +199,7 @@
                 <p class="narrative-p"><strong>ⵛⴰⵜⴻⵔⴱⵓⵔⵏ: ⴰⵜⵉⴳ ⵏ ⵉⴷⴰⵎⵎⵏ</strong> ⴰⴷ ⴽⵡⵏ ⵉⵙⵙⴽⵛⵎ ⴳ ⵓⵎⴰⴹⴰⵍ ⵏ ⵜⴼⵔⵉⵇⵜ ⵜⴰⵔⵓⵎⴰⵏⵉⵜ ⵜⴰⵎⵙⴷⵔⴰⵔⵜ, ⴷⴳ ⵜⵍⵍⴰ ⵜⵉⴳⴳⵓⵔⴰ ⵏ ⵜⵉⵖⵔⵎⵉⵡⵉⵏ ⵜⵉⵇⴱⵓⵔⵉⵏ ⴷ ⵜⵉⴼⵔⵉⵜ ⵏ ⵜⵣⵎⵎⴰⵔ ⵜⵓⴽⵔⵉⵙⵉⵏ.</p>
                 <p class="narrative-p">ⴰⴷ ⵜⴳⵎ ⴰⵎⴽⴰⵏ ⵏ "ⵉⵙⵔⴰⵏ", ⵢⴰⵏ ⵓⵜⵉⵜⴰⵏ ⵉⴷⴷⵔⵏ ⴷⴳ ⵜⵉيلⵍⴰⵙ, ⵉيلⵍⴰ ⵢⵉⵣⵔⵉ-ⵏⵏⵙ ⵉⵔⵥⴰⵏ ⴷⴳ ⵡⵓⵍ-ⵏⵏⵙ. ⵎⴰⵢⴷ ⴷ-ⵢⵓⵖⴰⵍ "ⵓⴱⵙⴽⵓⵔⵉⵙ", ⵓⵔ ⵉيلⵍⵉ ⵡⴰⵏⵏⴰ ⴰⴷ ⵉⵙⵙⵏⵜⵉ ⵜⵉⴽⵍⵉ ⵏⵏⵙ ⴰⴼⴰⴷ ⴰⴷ ⵢⴰⴼ ⵜⵉⴷⵜ ⵉⵏⵜⵍⵏ ⵙⴳ ⵉⵎⵉⵣⴰⵔ ⵏ ⵓⵣⵎⵣ.</p>
             </div>
-            <div class="visual-frame"><img src="letsgo.png" alt="Shatterborn Art"></div>
+            <div class="visual-frame"><img src="letsgo.png" alt="Concept Art Shatterborn"></div>
         </div>
     </section>
 

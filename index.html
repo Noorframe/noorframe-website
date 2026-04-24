@@ -35,11 +35,11 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION */
+        /* NAVIGATION - Logo poussé au maximum à gauche (2%) */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 10px 6%; /* Réduit pour accommoder le grand logo */
+            padding: 10px 2%; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -48,25 +48,14 @@
             direction: ltr !important;
         }
 
-        /* LOGO NAV - 200px sur Desktop */
+        /* LOGO - 200px Desktop */
         .studio-logo {
             height: 200px;
             width: auto;
             object-fit: contain;
             transition: 0.5s ease;
         }
-
-        /* LOGO INTER-SECTION MOBILE (Masqué sur PC) */
-        .mobile-logo-mid {
-            display: none;
-            text-align: center;
-            padding: 40px 0;
-        }
-        .mobile-logo-mid img {
-            width: 140px;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 20px rgba(184, 134, 11, 0.2));
-        }
+        .studio-logo:hover { transform: scale(1.05); }
 
         .nav-links { display: flex; align-items: center; }
         .nav-links > a {
@@ -134,6 +123,7 @@
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
         .visual-frame:hover img { transform: scale(1.03); }
 
+        /* PLATFORMS */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
@@ -142,26 +132,26 @@
         .platform-item:hover iconify-icon { color: var(--ocre); }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
+        /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
         .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
-        .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
+        .social-links a:hover { color: var(--ocre) !important; opacity: 1; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; }
 
-        /* RESPONSIVE SMARTPHONE */
+        /* RESPONSIVE SMARTPHONE - MENU PLUS FIN */
         @media (max-width: 1024px) {
-            nav { padding: 15px 5%; flex-direction: column; gap: 10px; background: rgba(5, 5, 5, 0.98); position: fixed; }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .nav-links a { margin-left: 0; font-size: 9px; letter-spacing: 1px; padding: 5px; opacity: 0.8; }
-            .lang-switcher { margin-left: 0; font-size: 9px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+            nav { padding: 5px 2%; flex-direction: column; gap: 5px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .nav-links a { margin-left: 0; font-size: 8px; letter-spacing: 1px; padding: 2px; opacity: 0.8; }
+            .lang-switcher { margin-left: 0; font-size: 8px; flex-wrap: wrap; justify-content: center; margin-top: 5px; }
             .section-reveal { padding: 120px 8% 80px; }
             .grid-cinematic { grid-template-columns: 1fr; gap: 40px; }
             h2 { font-size: 2rem !important; margin-bottom: 25px; text-align: left; }
-            .studio-logo { height: 100px; } /* Ajusté pour mobile pour ne pas bloquer la vue */
-            .mobile-logo-mid { display: block; } /* On affiche le logo de transition ici */
+            .studio-logo { height: 70px; } /* Logo beaucoup plus petit pour gagner de l'espace */
         }
     </style>
 </head>
@@ -176,11 +166,11 @@
             <a href="#contact">Contact</a>
             
             <span class="lang-switcher">
-                <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN</span>
+                <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN</span>
                 <span class="lang-sep">|</span>
-                <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR</a>
+                <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR</a>
                 <span class="lang-sep">|</span>
-                <a href="ar.html"><iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي</a>
+                <a href="ar.html"><iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي</a>
                 <span class="lang-sep">|</span>
                 <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
             </span>
@@ -219,10 +209,6 @@
             </div>
         </div>
     </section>
-
-    <div class="mobile-logo-mid">
-        <img src="logo-nav.png" alt="Noorframe Logo">
-    </div>
 
     <section id="platforms" class="platforms-section section-reveal">
         <div class="accent-line" style="margin: 0 auto 40px;"></div>

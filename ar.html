@@ -17,6 +17,7 @@
             --purple: #6200ea;
             --text: #d1d1d1;
             --transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            --nav-transition: transform 0.4s ease-in-out;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,160 +36,145 @@
             direction: rtl;
         }
 
-        /* NAVIGATION FORCÉE LTR */
+        /* NAVIGATION - CENTRAGE MATHÉMATIQUE */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 35px 6%;
+            padding: 10px 0; 
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center; 
+            align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important;
+            transition: var(--nav-transition);
         }
 
-        .studio-name { font-size: 0.9rem; letter-spacing: 2px; font-weight: 200; color: #fff; }
+        .nav-links { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            width: 70%;
+        }
 
-        .nav-links { display: flex; align-items: center; }
-        .nav-links > a {
+        /* Groupes de liens forcés à être de taille identique */
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            flex: 1 1 0;
+        }
+
+        /* En RTL : Group-Right est à gauche visuellement, Group-Left est à droite */
+        .group-left { justify-content: flex-start; }
+        .group-right { justify-content: flex-end; }
+        
+        .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.8rem;
-            margin-left: 30px; opacity: 0.5; transition: var(--transition);
-            direction: rtl;
+            opacity: 0.5; transition: var(--transition);
+            white-space: nowrap;
         }
-        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
+        .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LANG SWITCHER */
+        /* LOGO PC - Pile au centre */
+        .nav-logo {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            transition: 0.5s ease;
+            margin: 0 40px;
+            flex-shrink: 0;
+        }
+        .nav-logo:hover { transform: scale(1.1); }
+
+        /* LANG SWITCHER - Position absolue pour ne pas décentrer */
         .lang-switcher { 
-            margin-left: 40px; 
-            font-size: 0.75rem; 
+            position: absolute;
+            left: 3%; /* Inversé car dir=rtl */
             display: inline-flex; 
             align-items: center; 
             gap: 15px; 
-            direction: ltr !important;
-        }
-        
-        .lang-switcher a, .lang-switcher span.active-lang { 
-            display: flex !important; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-            color: inherit; 
-            transition: 0.3s;
+            direction: ltr !important; 
         }
 
+        .lang-switcher a, .lang-switcher span.active-lang { 
+            display: flex !important; align-items: center; gap: 6px; text-decoration: none; color: inherit; transition: 0.3s; font-size: 0.75rem;
+        }
         .lang-switcher span.active-lang { color: var(--ocre); font-weight: bold; }
         .lang-switcher a { opacity: 0.5; }
         .lang-switcher a:hover { opacity: 1; color: var(--ocre); }
-
-        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 18px; font-weight: bold; line-height: 1; }
+        .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
-        /* HEADER */
-        header {
-            height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            position: relative;
-            background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); 
-            background-size: cover; background-position: center;
-        }
-
-        .main-logo {
-            width: 85%; max-width: 700px; z-index: 10;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
-            animation: logoEntrance 4s ease-out;
-        }
-
-        @keyframes logoEntrance {
-            from { opacity: 0; transform: scale(1.1); filter: blur(20px); }
-            to { opacity: 1; transform: scale(1); filter: blur(0); }
-        }
-
-        /* SECTIONS */
-        .section-reveal { 
-            padding: 100px 5% 150px; max-width: 1400px; margin: auto;
-            opacity: 0; transform: translateY(50px); transition: var(--transition);
-            position: relative; z-index: 1;
-        }
+        /* HEADER & SECTIONS */
+        header { height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); background-size: cover; background-position: center; }
+        .main-logo { width: 85%; max-width: 700px; z-index: 10; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1)); animation: logoEntrance 4s ease-out; }
+        @keyframes logoEntrance { from { opacity: 0; transform: scale(1.1); filter: blur(20px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+        .section-reveal { padding: 100px 5% 150px; max-width: 1400px; margin: auto; opacity: 0; transform: translateY(50px); transition: var(--transition); position: relative; z-index: 1; }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
-
         h2 { font-family: 'Amiri', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; font-weight: 700; margin-bottom: 40px; line-height: 1.2; }
         .accent-line { width: 80px; height: 1px; background: linear-gradient(to left, var(--ocre), transparent); margin-bottom: 40px; }
         .narrative-p { font-size: 1.2rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
-
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
-        .visual-frame:hover img { transform: scale(1.03); }
 
-        /* PLATFORMS - CARRÉ FLOU (GLASSMORPHISM) */
-        .platforms-section {
-            text-align: center; 
-            padding: 100px 10%; 
-            background: rgba(8, 8, 8, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px);
-        }
-        .platform-icons { 
-            display: flex; 
-            justify-content: center; 
-            gap: 60px; 
-            margin-top: 40px; 
-            flex-wrap: wrap; 
-            direction: ltr !important; /* Force l'ordre PlayStation -> Epic */
-        }
+        /* PLATFORMS - GLASSMORPHISM */
+        .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; direction: ltr !important; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
         iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
-        /* FOOTER & SOCIALS */
+        /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; transition: 0.3s ease; }
-        .footer-mail:hover { letter-spacing: 3px; }
-        .social-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 60px; 
-            margin-bottom: 60px; 
-            flex-wrap: wrap; 
-            direction: ltr !important; /* Force l'ordre YouTube -> Instagram */
-        }
+        .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; direction: ltr !important; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
         .social-label { font-size: 0.65rem; letter-spacing: 3px; font-family: 'Montserrat', sans-serif; }
 
+        .nav-hidden { transform: translateY(-100%); }
+
         @media (max-width: 1024px) {
-            nav { padding: 20px 5%; flex-direction: column; position: fixed; background: rgba(5, 5, 5, 0.98); }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .nav-links a { margin-left: 0; font-size: 10px; padding: 5px; }
-            .grid-cinematic { grid-template-columns: 1fr; }
-            h2 { text-align: right; }
-            .lang-switcher { margin-left: 0; margin-top: 10px; }
+            nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            .nav-logo { height: 45px; margin: 0 10px; }
+            .nav-links { width: 100%; gap: 0; }
+            .nav-group { flex: none; gap: 5px; }
+            .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
+            .lang-switcher { position: relative; left: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
+            .section-reveal { padding: 90px 8% 40px; }
+            h2 { text-align: right; font-size: 1.8rem !important; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="studio-name">Noorframe Interactive</div>
+    <nav id="mainNav">
         <div class="nav-links">
-            <a href="#description">الكون</a>
-            <a href="#studio">الاستوديو</a>
-            <a href="#platforms">المنصات</a>
-            <a href="#contact">اتصل بنا</a>
-            <span class="lang-switcher">
-                <a href="index.html"><iconify-icon icon="circle-flags:uk" style="font-size: 16px;"></iconify-icon>EN</a>
-                <span class="lang-sep">|</span>
-                <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 16px;"></iconify-icon>FR</a>
-                <span class="lang-sep">|</span>
-                <span class="active-lang"><iconify-icon icon="circle-flags:dz" style="font-size: 16px;"></iconify-icon>عربي</span>
-                <span class="lang-sep">|</span>
-                <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
-            </span>
+            <div class="nav-group group-right">
+                <a href="#description">الكون</a>
+                <a href="#studio">الاستوديو</a>
+            </div>
+            
+            <img src="logo-nav.png" alt="Noorframe Logo" class="nav-logo">
+            
+            <div class="nav-group group-left">
+                <a href="#platforms">المنصات</a>
+                <a href="#contact">اتصل بنا</a>
+            </div>
+        </div>
+        
+        <div class="lang-switcher">
+            <a href="index.html"><iconify-icon icon="circle-flags:uk" style="font-size: 14px;"></iconify-icon>EN</a>
+            <span class="lang-sep">|</span>
+            <a href="fr.html"><iconify-icon icon="circle-flags:fr" style="font-size: 14px;"></iconify-icon>FR</a>
+            <span class="lang-sep">|</span>
+            <span class="active-lang"><iconify-icon icon="circle-flags:dz" style="font-size: 14px;"></iconify-icon>عربي</span>
+            <span class="lang-sep">|</span>
+            <a href="tmz.html"><span class="yaz-icon">ⵣ</span>ⵜⴰⵎⴰⵣⵉⵖⵜ</a>
         </div>
     </nav>
 
@@ -204,18 +190,14 @@
                 <p class="narrative-p">تغمرك لعبة <strong>شاتربورن</strong> في أجواء إفريقيا الرومانية الغامضة، حيث لا تزال أنقاض الحضارات القديمة تحمل آثار قوة محرمة منذ الأزل.</p>
                 <p class="narrative-p">تجسد دور "إسـران"، التيتان الذي يعيش في الظلال مسكوناً بماضٍ محطم. عندما يظهر "الأوبسكوريس" من جديد، لا يجد مفراً من استئناف الرحلة واقتفاء أثر الحقيقة المدفونة منذ قرون من خلال الأنقاض، وأكاذيب روما، وجراح الزمن.</p>
             </div>
-            <div class="visual-frame">
-                <img src="letsgo.png" alt="Shatterborn Art">
-            </div>
+            <div class="visual-frame"><img src="letsgo.png" alt="Shatterborn Art"></div>
         </div>
     </section>
 
     <section id="studio" class="section-reveal">
         <div class="accent-line"></div>
         <div class="grid-cinematic">
-            <div class="visual-frame">
-                <img src="visuaal.png" alt="Noorframe Interactive Vision">
-            </div>
+            <div class="visual-frame"><img src="visuaal.png" alt="Noorframe Interactive Vision"></div>
             <div>
                 <h2>من نحن؟</h2>
                 <p class="narrative-p">تأسس استوديو <strong>"نورفريم إنتراكتيف"</strong> في عام 2026، وهو استوديو مستقل مخصص لابتكار تجارب ألعاب فردية فاخرة للكمبيوتر و أجهزة الألعاب.</p>
@@ -251,6 +233,18 @@
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.15 });
         document.querySelectorAll('.section-reveal').forEach(s => observer.observe(s));
+
+        let lastScrollTop = 0;
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
     </script>
 </body>
 </html>

@@ -36,13 +36,13 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - Centrage Absolu */
+        /* NAVIGATION - CENTRAGE ABSOLU PC */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 15px 0; /* Padding vertical uniquement */
+            padding: 10px 3%; 
             display: flex;
-            justify-content: center; /* Centre tout le contenu horizontalement */
+            justify-content: center; /* Centre le bloc nav-links */
             align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
@@ -50,33 +50,44 @@
             transition: var(--nav-transition);
         }
 
-        /* Conteneur des liens */
         .nav-links { 
             display: flex; 
             align-items: center; 
             justify-content: center;
+            gap: 40px; /* Espace entre les groupes de liens et le logo */
         }
+
+        .nav-group {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1; /* Force les deux côtés à avoir la même largeur */
+        }
+
+        .group-left { justify-content: flex-end; }
+        .group-right { justify-content: flex-start; }
         
-        .nav-links > a {
+        .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
             text-transform: uppercase; opacity: 0.5; transition: var(--transition);
-            margin: 0 25px; /* Espacement équilibré */
+            white-space: nowrap;
         }
-        .nav-links > a:hover { opacity: 1; color: var(--ocre); }
+        .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO - Pile au centre */
+        /* LOGO PC - Pile au milieu */
         .nav-logo {
-            height: 80px; /* Taille élégante sur PC */
+            height: 80px;
             width: auto;
             object-fit: contain;
             transition: 0.5s ease;
+            flex-shrink: 0;
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER - Sorti du flux pour ne pas décentrer le logo */
+        /* LANG SWITCHER - Ne pousse plus le reste */
         .lang-switcher { 
             position: absolute;
-            right: 3%; /* Fixé au bord droit */
+            right: 3%;
             display: inline-flex; 
             align-items: center; 
             gap: 15px; 
@@ -109,27 +120,32 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
+        /* PLATFORMS RESTAUREES */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
-        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
-        
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* FOOTER & SOCIALS RESTAURES */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
+        .social-label { font-size: 0.65rem; letter-spacing: 3px; }
 
         .nav-hidden { transform: translateY(-100%); }
 
-        /* RESPONSIVE SMARTPHONE - ULTRA FIN */
+        /* RESPONSIVE SMARTPHONE - INCHANGE */
         @media (max-width: 1024px) {
             nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-logo { height: 45px; margin: 0 10px; }
-            .nav-links { width: 100%; }
+            .nav-links { width: 100%; gap: 0; }
+            .nav-group { flex: none; gap: 5px; }
             .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
             .lang-switcher { position: relative; right: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 4px; }
             .section-reveal { padding: 90px 8% 40px; }
@@ -141,13 +157,17 @@
 
     <nav id="mainNav">
         <div class="nav-links">
-            <a href="#description">Universe</a>
-            <a href="#studio">Studio</a>
+            <div class="nav-group group-left">
+                <a href="#description">Universe</a>
+                <a href="#studio">Studio</a>
+            </div>
             
             <img src="logo-nav.png" alt="Noorframe Logo" class="nav-logo">
             
-            <a href="#platforms">Platforms</a>
-            <a href="#contact">Contact</a>
+            <div class="nav-group group-right">
+                <a href="#platforms">Platforms</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
         
         <div class="lang-switcher">
@@ -194,10 +214,10 @@
         <div class="accent-line" style="margin: 0 auto 40px;"></div>
         <h2>Coming Soon</h2>
         <div class="platform-icons">
-            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon></div>
-            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:playstation"></iconify-icon><span class="platform-name">PlayStation</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:xbox"></iconify-icon><span class="platform-name">Xbox Series</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:steam"></iconify-icon><span class="platform-name">Steam</span></div>
+            <div class="platform-item"><iconify-icon icon="simple-icons:epicgames"></iconify-icon><span class="platform-name">Epic</span></div>
         </div>
     </section>
 
@@ -205,9 +225,18 @@
         <div class="footer-logo"><strong>Shatterborn</strong></div>
         <a href="mailto:contact@noorframeinteractive.com" class="footer-mail">contact@noorframeinteractive.com</a>
         <div class="social-links">
-            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@noorframeinteractive" target="_blank">
+                <i class="fab fa-youtube"></i>
+                <span class="social-label">YOUTUBE</span>
+            </a>
+            <a href="https://x.com/noorframe" target="_blank">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span class="social-label">X</span>
+            </a>
+            <a href="https://www.instagram.com/noorframeinteractive" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span class="social-label">INSTAGRAM</span>
+            </a>
         </div>
         <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">© 2026 <strong>Noorframe Interactive</strong>. Crafted with passion in Algeria.</p>
     </footer>
@@ -222,7 +251,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

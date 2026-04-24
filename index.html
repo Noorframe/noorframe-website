@@ -36,11 +36,11 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - Logo collé au COIN ABSOLU */
+        /* NAVIGATION - Logo collé au coin ABSOLU */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 0 0.5%; /* Zéro padding en haut */
+            padding: 0 0.5%; 
             display: flex;
             justify-content: space-between;
             align-items: flex-start; 
@@ -50,30 +50,30 @@
             transition: var(--nav-transition);
         }
 
-        /* LOGO DESKTOP - Décalé pour le coin extrême */
+        /* LOGO DESKTOP - Réduit à 100px et poussé au maximum */
         .studio-logo {
-            height: 200px;
+            height: 100px; /* Taille divisée par 2 */
             width: auto;
             object-fit: contain;
-            margin-left: -45px; /* Pousse encore plus à gauche */
-            margin-top: -15px;  /* Pousse encore plus en haut */
+            margin-left: -35px; /* Coin extrême gauche */
+            margin-top: -10px;  /* Coin extrême haut */
             transition: 0.5s ease;
         }
 
         /* LOGO MOBILE (caché sur PC) */
         .nav-logo-mobile {
             display: none;
-            height: 32px; /* Très petit pour garder la barre fine */
+            height: 32px;
             width: auto;
             margin: 0 8px;
             vertical-align: middle;
         }
 
-        /* ONGLETS - Remontés au maximum */
+        /* ONGLETS - Remontés pour s'aligner sur le nouveau logo */
         .nav-links { 
             display: flex; 
             align-items: center; 
-            margin-top: 15px; /* Aligné avec le haut de la page */
+            margin-top: 18px; /* Ajusté pour le logo 100px */
         }
         .nav-links > a {
             color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
@@ -84,7 +84,7 @@
         /* LANG SWITCHER DESKTOP */
         .lang-switcher { 
             margin-left: 40px; 
-            margin-top: 15px;
+            margin-top: 18px; /* Aligné avec les onglets */
             font-size: 0.75rem; 
             display: inline-flex; 
             align-items: center; 
@@ -122,50 +122,21 @@
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
+        .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
 
         .nav-hidden { transform: translateY(-100%); }
 
-        /* RESPONSIVE SMARTPHONE - ULTRA FIN AVEC LOGO INTÉGRÉ */
+        /* RESPONSIVE SMARTPHONE - INCHANGÉ */
         @media (max-width: 1024px) {
-            nav { 
-                padding: 10px 1%; 
-                flex-direction: column; 
-                gap: 6px; 
-                background: rgba(5, 5, 5, 0.98); 
-                position: fixed; 
-                align-items: center;
-                justify-content: center;
-            }
-            .studio-logo { display: none; } /* On cache le gros logo */
-            .nav-logo-mobile { display: inline-block; } /* On montre le petit logo entre les liens */
-            
-            .nav-links { 
-                margin-top: 0; 
-                width: 100%; 
-                justify-content: center; 
-                gap: 3px;
-                flex-wrap: nowrap; 
-            }
-            .nav-links a { 
-                font-size: 6.5px; 
-                letter-spacing: 1px; 
-                margin-left: 0; 
-                padding: 0 2px;
-                white-space: nowrap;
-            }
-            .lang-switcher { 
-                margin-left: 0; 
-                margin-top: 0;
-                font-size: 6.5px; 
-                gap: 8px; 
-                padding-top: 4px;
-                border-top: 1px solid rgba(255,255,255,0.05);
-                width: 100%;
-                justify-content: center;
-            }
+            nav { padding: 10px 1%; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; align-items: center; justify-content: center; }
+            .studio-logo { display: none; }
+            .nav-logo-mobile { display: inline-block; }
+            .nav-links { margin-top: 0; width: 100%; justify-content: center; gap: 3px; flex-wrap: nowrap; }
+            .nav-links a { font-size: 6.5px; letter-spacing: 1px; margin-left: 0; padding: 0 2px; white-space: nowrap; }
+            .lang-switcher { margin-left: 0; margin-top: 0; font-size: 6.5px; gap: 8px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; }
             .section-reveal { padding: 80px 8% 40px; }
             h2 { font-size: 1.6rem !important; text-align: left; }
         }
@@ -175,17 +146,13 @@
 
     <nav id="mainNav">
         <img src="logo-nav.png" alt="Noorframe Interactive" class="studio-logo">
-        
         <div class="nav-links">
             <a href="#description">Universe</a>
             <a href="#studio">Studio</a>
-            
             <img src="logo-nav.png" alt="Logo" class="nav-logo-mobile">
-            
             <a href="#platforms">Platforms</a>
             <a href="#contact">Contact</a>
         </div>
-        
         <div class="lang-switcher">
             <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 10px;"></iconify-icon>EN</span>
             <span class="lang-sep">|</span>
@@ -210,18 +177,14 @@
                 <p class="narrative-p"><strong>Shatterborn: Price of Blood</strong> plunges you into a twilight Roman Africa, where the ancient ruins still harbor the fading traces of a long-forbidden force.</p>
                 <p class="narrative-p">You embody Esran, a Titan living in the shadows, haunted by a shattered past. When the Obscuris resurfaces, he must follow a truth buried for centuries through the ruins, Rome's lies, and time's wounds.</p>
             </div>
-            <div class="visual-frame">
-                <img src="letsgo.png" alt="Concept Art Shatterborn">
-            </div>
+            <div class="visual-frame"><img src="letsgo.png" alt="Concept Art Shatterborn"></div>
         </div>
     </section>
 
     <section id="studio" class="section-reveal">
         <div class="accent-line"></div>
         <div class="grid-cinematic">
-            <div class="visual-frame">
-                <img src="visuaal.png" alt="Noorframe Interactive Vision">
-            </div>
+            <div class="visual-frame"><img src="visuaal.png" alt="Noorframe Interactive Vision"></div>
             <div>
                 <h2>WHO ARE WE?</h2>
                 <p class="narrative-p">Founded in 2026, <strong>Noorframe Interactive</strong> is an independent game studio dedicated to creating premium solo video game experiences for PC and consoles.</p>
@@ -249,9 +212,7 @@
             <a href="https://x.com/noorframe" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
             <a href="https://www.instagram.com/noorframeinteractive" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-        <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">
-            © 2026 <strong>Noorframe Interactive</strong>. Crafted with passion in Algeria.
-        </p>
+        <p style="font-size: 0.6rem; letter-spacing: 2px; opacity: 0.3; text-transform: uppercase;">© 2026 <strong>Noorframe Interactive</strong>. Crafted with passion in Algeria.</p>
     </footer>
 
     <script>

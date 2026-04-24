@@ -45,7 +45,7 @@
             align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
-            direction: ltr !important;
+            direction: ltr !important; /* Force l'ordre des blocs pour le centrage */
             transition: var(--nav-transition);
         }
 
@@ -63,8 +63,8 @@
             flex: 1 1 0; 
         }
 
-        .group-left { justify-content: flex-end; gap: 30px; }
-        .group-right { justify-content: flex-start; gap: 30px; }
+        .group-left { justify-content: flex-end; gap: 35px; }
+        .group-right { justify-content: flex-start; gap: 35px; }
         
         .nav-links a {
             color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 2px;
@@ -84,7 +84,7 @@
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER - Aligné à la suite des onglets de droite */
+        /* LANG SWITCHER - À sa place à la suite des onglets */
         .lang-switcher { 
             display: inline-flex; 
             align-items: center; 
@@ -102,7 +102,7 @@
         .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
-        /* Spacer pour équilibrer le poids visuel à gauche */
+        /* Spacer pour équilibrer le poids visuel du lang-switcher */
         .nav-spacer { width: 180px; flex-shrink: 0; } 
 
         /* HEADER & SECTIONS */
@@ -122,14 +122,16 @@
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
+        /* PLATFORMS */
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
-        iconify-icon { font-size: 2.8rem; color: #fff; }
+        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
+        /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; letter-spacing: 10px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
@@ -196,7 +198,7 @@
                 <p class="narrative-p"><strong>ⵛⴰⵜⴻⵔⴱⵓⵔⵏ: ⴰⵜⵉⴳ ⵏ ⵉⴷⴰⵎⵎⵏ</strong> ⴰⴷ ⴽⵡⵏ ⵉⵙⵙⴽⵛⵎ ⴳ ⵓⵎⴰⴹⴰⵍ ⵏ ⵜⴼⵔⵉⵇⵜ ⵜⴰⵔⵓⵎⴰⵏⵉⵜ ⵜⴰⵎⵙⴷⵔⴰⵔⵜ, ⴷⴳ ⵜⵍⵍⴰ ⵜⵉⴳⴳⵓⵔⴰ ⵏ ⵜⵉⵖⵔⵎⵉⵡⵉⵏ ⵜⵉⵇⴱⵓⵔⵉⵏ ⴷ ⵜⵉⴼⵔⵉⵜ ⵏ ⵜⵣⵎⵎⴰⵔ ⵜⵓⴽⵔⵉⵙⵉⵏ.</p>
                 <p class="narrative-p">ⴰⴷ ⵜⴳⵎ ⴰⵎⴽⴰⵏ ⵏ "ⵉⵙⵔⴰⵏ", ⵢⴰⵏ ⵓⵜⵉⵜⴰⵏ ⵉⴷⴷⵔⵏ ⴷⴳ ⵜⵉيلⵍⴰⵙ, ⵉيلⵍⴰ ⵢⵉⵣⵔⵉ-ⵏⵏⵙ ⵉⵔⵥⴰⵏ ⴷⴳ ⵡⵓⵍ-ⵏⵏⵙ. ⵎⴰⵢⴷ ⴷ-ⵢⵓⵖⴰⵍ "ⵓⴱⵙⴽⵓⵔⵉⵙ", ⵓⵔ ⵉيلⵍⵉ ⵡⴰⵏⵏⴰ ⴰⴷ ⵉⵙⵙⵏⵜⵉ ⵜⵉⴽⵍⵉ ⵏⵏⵙ ⴰⴼⴰⴷ ⴰⴷ ⵢⴰⴼ ⵜⵉⴷⵜ ⵉⵏⵜⵍⵏ ⵙⴳ ⵉⵎⵉⵣⴰⵔ ⵏ ⵓⵣⵎⵣ.</p>
             </div>
-            <div class="visual-frame"><img src="letsgo.png" alt="Concept Art Shatterborn"></div>
+            <div class="visual-frame"><img src="letsgo.png" alt="Shatterborn Art"></div>
         </div>
     </section>
 

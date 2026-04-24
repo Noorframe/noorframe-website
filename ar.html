@@ -36,7 +36,7 @@
             direction: rtl;
         }
 
-        /* NAVIGATION - CENTRAGE MATHÉMATIQUE PARFAIT */
+        /* NAVIGATION - IDENTIQUE AU EN (CENTRAGE LOGO) */
         nav {
             position: absolute;
             top: 0; width: 100%;
@@ -46,8 +46,8 @@
             align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
+            direction: ltr !important; /* Force l'ordre des blocs pour le centrage */
             transition: var(--nav-transition);
-            direction: ltr !important; /* Force l'ordre visuel des colonnes de gauche à droite */
         }
 
         .nav-links { 
@@ -57,7 +57,7 @@
             width: 95%; 
         }
 
-        /* Verrouillage du logo au centre via deux blocs de taille égale */
+        /* Blocs de taille égale pour centrer le logo au pixel près */
         .nav-group {
             display: flex;
             align-items: center;
@@ -71,11 +71,11 @@
             color: #fff; text-decoration: none; font-size: 0.8rem;
             opacity: 0.5; transition: var(--transition);
             white-space: nowrap;
-            direction: rtl; /* Garde le texte arabe dans le bon sens */
+            direction: rtl; /* Texte arabe reste en RTL */
         }
         .nav-links a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO PC - Pile au centre */
+        /* LOGO - Pile au centre (boule blanche) */
         .nav-logo {
             height: 80px;
             width: auto;
@@ -86,7 +86,7 @@
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER - Placé à la fin du groupe de droite */
+        /* LANG SWITCHER - Identique au EN */
         .lang-switcher { 
             display: inline-flex; 
             align-items: center; 
@@ -104,32 +104,37 @@
         .yaz-icon { font-family: 'Noto Sans Tifinagh', sans-serif; font-size: 14px; font-weight: bold; line-height: 1; }
         .lang-sep { opacity: 0.2; font-weight: 100; }
 
+        /* Spacer pour équilibrer parfaitement le logo à cause du lang-switcher */
+        .nav-spacer { width: 160px; flex-shrink: 0; } 
+
         /* HEADER & SECTIONS */
         header { height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; background: linear-gradient(rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.6)), url("SHATTERBORN LOGO FOG.png"); background-size: cover; background-position: center; z-index: 2; }
+        .fade-bridge { width: 100%; height: 400px; background: linear-gradient(to bottom, transparent, #050505); margin-top: -400px; position: relative; z-index: 10; pointer-events: none; }
         .main-logo { width: 85%; max-width: 700px; z-index: 10; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1)); animation: logoEntrance 4s ease-out; }
         @keyframes logoEntrance { from { opacity: 0; transform: scale(1.1); filter: blur(20px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+        
         .section-reveal { padding: 100px 5% 150px; max-width: 1400px; margin: auto; opacity: 0; transform: translateY(50px); transition: var(--transition); position: relative; z-index: 1; }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
+        
         h2 { font-family: 'Amiri', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: #fff; font-weight: 700; margin-bottom: 40px; line-height: 1.2; }
         .accent-line { width: 80px; height: 1px; background: linear-gradient(to left, var(--ocre), transparent); margin-bottom: 40px; }
         .narrative-p { font-size: 1.2rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
+        
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
 
-        /* PLATFORMS */
-        .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; direction: ltr !important; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
-        iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
+        iconify-icon { font-size: 2.8rem; color: #fff; }
         .platform-name { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
         
-        /* FOOTER */
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Amiri', serif; font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
-        .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; transition: 0.3s ease; }
+        .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; direction: ltr !important; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
@@ -137,16 +142,16 @@
 
         .nav-hidden { transform: translateY(-100%); }
 
-        /* RESPONSIVE SMARTPHONE */
         @media (max-width: 1024px) {
             nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-logo { height: 45px; margin: 0 10px; }
             .nav-links { width: 100%; gap: 0; }
             .nav-group { flex: none; gap: 5px; }
+            .nav-spacer { display: none; }
             .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
-            .lang-switcher { position: relative; margin-left: 0; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
+            .lang-switcher { margin-left: 0; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
             .section-reveal { padding: 90px 8% 40px; }
-            h2 { text-align: right; font-size: 1.8rem !important; }
+            h2 { font-size: 1.8rem !important; text-align: right; }
         }
     </style>
 </head>
@@ -154,6 +159,8 @@
 
     <nav id="mainNav">
         <div class="nav-links">
+            <div class="nav-spacer"></div>
+
             <div class="nav-group group-left">
                 <a href="#description">الكون</a>
                 <a href="#studio">الاستوديو</a>
@@ -181,6 +188,7 @@
     <header>
         <img src="LOGO_SHATTERBORN_AR.png" alt="شاتربورن: ثمن الدم" class="main-logo">
     </header>
+    <div class="fade-bridge"></div>
 
     <section id="description" class="section-reveal">
         <div class="accent-line"></div>
@@ -238,7 +246,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

@@ -36,13 +36,13 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - Logo central symétrique */
+        /* NAVIGATION - Centrage Absolu */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 10px 2%; 
+            padding: 15px 0; /* Padding vertical uniquement */
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Centre tout le contenu horizontalement */
             align-items: center; 
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
@@ -50,43 +50,38 @@
             transition: var(--nav-transition);
         }
 
-        /* Conteneur des liens qui gère le centrage du logo */
+        /* Conteneur des liens */
         .nav-links { 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            flex: 1; /* Prend tout l'espace central pour garantir le centrage */
         }
         
         .nav-links > a {
             color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
             text-transform: uppercase; opacity: 0.5; transition: var(--transition);
-            margin: 0 20px; /* Espacement égal entre onglets */
+            margin: 0 25px; /* Espacement équilibré */
         }
         .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LOGO - Position centrale entre Studio et Platforms */
+        /* LOGO - Pile au centre */
         .nav-logo {
-            height: 80px; /* Taille équilibrée sur PC */
+            height: 80px; /* Taille élégante sur PC */
             width: auto;
             object-fit: contain;
-            margin: 0 40px; /* Espace autour du logo */
             transition: 0.5s ease;
         }
         .nav-logo:hover { transform: scale(1.1); }
 
-        /* LANG SWITCHER */
+        /* LANG SWITCHER - Sorti du flux pour ne pas décentrer le logo */
         .lang-switcher { 
+            position: absolute;
+            right: 3%; /* Fixé au bord droit */
             display: inline-flex; 
             align-items: center; 
             gap: 15px; 
             direction: ltr !important; 
-            width: 180px; /* Largeur fixe pour aider au centrage du bloc principal */
-            justify-content: flex-end;
         }
-        
-        /* Spacer invisible à gauche pour compenser la largeur du lang-switcher et centrer parfaitement le logo */
-        .nav-spacer { width: 180px; }
 
         .lang-switcher a, .lang-switcher span.active-lang { 
             display: flex !important; align-items: center; gap: 6px; text-decoration: none; color: inherit; transition: 0.3s; font-size: 0.7rem;
@@ -132,12 +127,11 @@
 
         /* RESPONSIVE SMARTPHONE - ULTRA FIN */
         @media (max-width: 1024px) {
-            .nav-spacer { display: none; }
-            nav { padding: 8px 1%; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            nav { padding: 8px 0; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; }
             .nav-logo { height: 45px; margin: 0 10px; }
-            .nav-links { justify-content: center; gap: 0; width: 100%; }
+            .nav-links { width: 100%; }
             .nav-links a { font-size: 7px; letter-spacing: 1px; padding: 0 4px; margin: 0 2px; }
-            .lang-switcher { font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 4px; }
+            .lang-switcher { position: relative; right: auto; font-size: 7px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 4px; }
             .section-reveal { padding: 90px 8% 40px; }
             h2 { font-size: 1.6rem !important; text-align: left; }
         }
@@ -146,8 +140,6 @@
 <body>
 
     <nav id="mainNav">
-        <div class="nav-spacer"></div>
-
         <div class="nav-links">
             <a href="#description">Universe</a>
             <a href="#studio">Studio</a>
@@ -230,7 +222,7 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > lastScrollTop && scrollTop > 50) {
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
                 nav.classList.add('nav-hidden');
             } else {
                 nav.classList.remove('nav-hidden');

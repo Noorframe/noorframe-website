@@ -36,55 +36,50 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION - Logo collé au coin ABSOLU */
+        /* NAVIGATION - Structure centrée et unifiée */
         nav {
             position: absolute;
             top: 0; width: 100%;
-            padding: 0 0.5%; 
+            padding: 10px 2%; 
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; 
+            align-items: center; /* Centrage vertical parfait */
             z-index: 1000;
             background: linear-gradient(to bottom, rgba(5,5,5,0.9), transparent);
             direction: ltr !important;
             transition: var(--nav-transition);
         }
 
-        /* LOGO DESKTOP - Réduit à 100px et poussé au maximum */
-        .studio-logo {
-            height: 100px; /* Taille divisée par 2 */
+        /* LOGO UNIQUE DANS LE MENU */
+        .nav-logo {
+            height: 100px; /* Taille idéale sur PC */
             width: auto;
             object-fit: contain;
-            margin-left: -35px; /* Coin extrême gauche */
-            margin-top: -10px;  /* Coin extrême haut */
+            margin: 0 30px; /* Espace entre Studio et Platforms */
             transition: 0.5s ease;
         }
+        .nav-logo:hover { transform: scale(1.1); }
 
-        /* LOGO MOBILE (caché sur PC) */
-        .nav-logo-mobile {
-            display: none;
-            height: 32px;
-            width: auto;
-            margin: 0 8px;
-            vertical-align: middle;
-        }
-
-        /* ONGLETS - Remontés pour s'aligner sur le nouveau logo */
         .nav-links { 
             display: flex; 
             align-items: center; 
-            margin-top: 18px; /* Ajusté pour le logo 100px */
+            flex-grow: 1;
+            justify-content: center; /* Centre le bloc de liens */
         }
+        
         .nav-links > a {
-            color: #fff; text-decoration: none; font-size: 0.65rem; letter-spacing: 3px;
-            text-transform: uppercase; margin-left: 20px; opacity: 0.5; transition: var(--transition);
+            color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px;
+            text-transform: uppercase; opacity: 0.5; transition: var(--transition);
+            white-space: nowrap;
         }
         .nav-links > a:hover { opacity: 1; color: var(--ocre); }
 
-        /* LANG SWITCHER DESKTOP */
+        /* Espacement spécifique pour les liens autour du logo */
+        .link-left { margin-right: 15px; }
+        .link-right { margin-left: 15px; }
+
+        /* LANG SWITCHER */
         .lang-switcher { 
-            margin-left: 40px; 
-            margin-top: 18px; /* Aligné avec les onglets */
             font-size: 0.75rem; 
             display: inline-flex; 
             align-items: center; 
@@ -105,39 +100,43 @@
         .fade-bridge { width: 100%; height: 400px; background: linear-gradient(to bottom, transparent, #050505); margin-top: -400px; position: relative; z-index: 10; pointer-events: none; }
         .main-logo { width: 85%; max-width: 700px; z-index: 10; filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1)); animation: logoEntrance 4s ease-out; }
         @keyframes logoEntrance { from { opacity: 0; transform: scale(1.1); filter: blur(20px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+        
         .section-reveal { padding: 100px 5% 150px; max-width: 1400px; margin: auto; opacity: 0; transform: translateY(50px); transition: var(--transition); position: relative; z-index: 1; }
         .section-reveal.active { opacity: 1; transform: translateY(0); }
+        
         h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; font-weight: 300; margin-bottom: 40px; line-height: 1.1; text-transform: uppercase; letter-spacing: 2px; }
         .accent-line { width: 80px; height: 1px; background: linear-gradient(to right, var(--ocre), transparent); margin-bottom: 40px; }
         .narrative-p { font-size: 1.1rem; max-width: 750px; margin-bottom: 25px; font-weight: 300; letter-spacing: 0.5px; opacity: 0.9; }
+        
         .grid-cinematic { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5vw; align-items: center; width: 100%; }
         .visual-frame { width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
         .visual-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
+
         .platforms-section { text-align: center; padding: 100px 10%; background: rgba(8, 8, 8, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
         .platform-icons { display: flex; justify-content: center; gap: 60px; margin-top: 40px; flex-wrap: wrap; }
         .platform-item { display: flex; flex-direction: column; gap: 15px; transition: 0.3s; align-items: center; width: 120px; opacity: 0.7; }
         iconify-icon { font-size: 2.8rem; color: #fff; transition: var(--transition); }
         .platform-item:hover { opacity: 1; transform: translateY(-5px); }
         .platform-item:hover iconify-icon { color: var(--ocre); }
+        
         footer { padding: 100px 10% 50px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(5, 5, 5, 0.8); }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; letter-spacing: 15px; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
         .footer-mail { display: block; font-size: 0.7rem; letter-spacing: 2px; color: var(--ocre); text-decoration: none; margin-bottom: 40px; text-transform: uppercase; opacity: 0.8; transition: 0.3s ease; }
-        .footer-mail:hover { opacity: 1; letter-spacing: 3px; }
         .social-links { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
         .social-links a { color: white !important; font-size: 1.5rem; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0.8; transition: 0.3s ease; }
         .social-links a:hover { color: var(--ocre) !important; transform: translateY(-5px); }
 
+        /* CLASSE POUR CACHER LE NAV AU SCROLL */
         .nav-hidden { transform: translateY(-100%); }
 
-        /* RESPONSIVE SMARTPHONE - INCHANGÉ */
+        /* RESPONSIVE SMARTPHONE - ULTRA FIN */
         @media (max-width: 1024px) {
-            nav { padding: 10px 1%; flex-direction: column; gap: 6px; background: rgba(5, 5, 5, 0.98); position: fixed; align-items: center; justify-content: center; }
-            .studio-logo { display: none; }
-            .nav-logo-mobile { display: inline-block; }
-            .nav-links { margin-top: 0; width: 100%; justify-content: center; gap: 3px; flex-wrap: nowrap; }
-            .nav-links a { font-size: 6.5px; letter-spacing: 1px; margin-left: 0; padding: 0 2px; white-space: nowrap; }
-            .lang-switcher { margin-left: 0; margin-top: 0; font-size: 6.5px; gap: 8px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; }
-            .section-reveal { padding: 80px 8% 40px; }
+            nav { padding: 8px 1%; flex-direction: column; gap: 8px; background: rgba(5, 5, 5, 0.98); position: fixed; }
+            .nav-logo { height: 40px; margin: 0 10px; }
+            .nav-links { justify-content: center; gap: 5px; }
+            .nav-links a { font-size: 6.5px; letter-spacing: 1px; padding: 0 2px; }
+            .lang-switcher { font-size: 6.5px; gap: 8px; border-top: 1px solid rgba(255,255,255,0.05); width: 100%; justify-content: center; padding-top: 5px; }
+            .section-reveal { padding: 90px 8% 40px; }
             h2 { font-size: 1.6rem !important; text-align: left; }
         }
     </style>
@@ -145,14 +144,18 @@
 <body>
 
     <nav id="mainNav">
-        <img src="logo-nav.png" alt="Noorframe Interactive" class="studio-logo">
+        <div style="width: 100px;" class="desktop-only"></div>
+
         <div class="nav-links">
-            <a href="#description">Universe</a>
-            <a href="#studio">Studio</a>
-            <img src="logo-nav.png" alt="Logo" class="nav-logo-mobile">
-            <a href="#platforms">Platforms</a>
-            <a href="#contact">Contact</a>
+            <a href="#description" class="link-left">Universe</a>
+            <a href="#studio" class="link-left">Studio</a>
+            
+            <img src="logo-nav.png" alt="Noorframe Logo" class="nav-logo">
+            
+            <a href="#platforms" class="link-right">Platforms</a>
+            <a href="#contact" class="link-right">Contact</a>
         </div>
+        
         <div class="lang-switcher">
             <span class="active-lang"><iconify-icon icon="circle-flags:uk" style="font-size: 10px;"></iconify-icon>EN</span>
             <span class="lang-sep">|</span>
@@ -224,15 +227,13 @@
         let lastScrollTop = 0;
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', function() {
-            if (window.innerWidth <= 1024) {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > lastScrollTop && scrollTop > 50) {
-                    nav.classList.add('nav-hidden');
-                } else {
-                    nav.classList.remove('nav-hidden');
-                }
-                lastScrollTop = scrollTop;
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
             }
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>
